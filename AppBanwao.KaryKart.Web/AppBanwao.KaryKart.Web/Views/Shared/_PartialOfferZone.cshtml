@@ -1,0 +1,16 @@
+﻿@using System.Collections.Generic
+@{
+    
+    var offers = (List<AppBanwao.KarryKart.Model.Offer>) ViewBag.Offers;
+}
+
+<div class="row text-center">
+    <h3>Hot Offers</h3>
+    @foreach (var offer in offers)
+    { 
+    <div class="col-md-12">
+        <img class="img-thumbnail" src="@Url.Content(offer.ImageLink)" />
+    </div>
+    }
+
+</div>

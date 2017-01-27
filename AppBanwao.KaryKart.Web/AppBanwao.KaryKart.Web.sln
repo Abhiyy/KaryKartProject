@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppBanwao.KaryKart.Web", "AppBanwao.KaryKart.Web\AppBanwao.KaryKart.Web.csproj", "{ABCD8C6F-792D-4EB2-AF4D-C2793B51B8D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppBanwao.KarryKart.Model", "AppBanwao.KarryKart.Model\AppBanwao.KarryKart.Model.csproj", "{2732F345-029C-47C2-A909-9B73487A4104}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DA.EncryptionManager", "DA.EncryptionManager\DA.EncryptionManager.csproj", "{71D26DFC-CD39-4BE9-AF3E-FC410FC790AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DA.EmailEngine", "DA.EmailEngine\DA.EmailEngine.csproj", "{7BD4819E-476D-47CC-885D-3B64CC961638}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KarryKart.API", "KarryKart.API\KarryKart.API.csproj", "{56C95594-853E-4080-AC5A-4C72F21D4441}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ABCD8C6F-792D-4EB2-AF4D-C2793B51B8D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABCD8C6F-792D-4EB2-AF4D-C2793B51B8D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABCD8C6F-792D-4EB2-AF4D-C2793B51B8D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABCD8C6F-792D-4EB2-AF4D-C2793B51B8D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2732F345-029C-47C2-A909-9B73487A4104}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2732F345-029C-47C2-A909-9B73487A4104}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2732F345-029C-47C2-A909-9B73487A4104}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2732F345-029C-47C2-A909-9B73487A4104}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71D26DFC-CD39-4BE9-AF3E-FC410FC790AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71D26DFC-CD39-4BE9-AF3E-FC410FC790AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71D26DFC-CD39-4BE9-AF3E-FC410FC790AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71D26DFC-CD39-4BE9-AF3E-FC410FC790AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BD4819E-476D-47CC-885D-3B64CC961638}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BD4819E-476D-47CC-885D-3B64CC961638}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BD4819E-476D-47CC-885D-3B64CC961638}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BD4819E-476D-47CC-885D-3B64CC961638}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56C95594-853E-4080-AC5A-4C72F21D4441}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56C95594-853E-4080-AC5A-4C72F21D4441}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56C95594-853E-4080-AC5A-4C72F21D4441}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56C95594-853E-4080-AC5A-4C72F21D4441}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

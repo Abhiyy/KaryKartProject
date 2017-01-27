@@ -1,0 +1,10 @@
+D:\My work\DA work\Repo\kk\AppBanwao.KaryKart.Web\AppBanwao.KarryKart.Model\bin\Release\AppBanwao.KarryKart.Model.dll.config
+D:\My work\DA work\Repo\kk\AppBanwao.KaryKart.Web\AppBanwao.KarryKart.Model\bin\Release\AppBanwao.KarryKart.Model.dll
+D:\My work\DA work\Repo\kk\AppBanwao.KaryKart.Web\AppBanwao.KarryKart.Model\bin\Release\AppBanwao.KarryKart.Model.pdb
+D:\My work\DA work\Repo\kk\AppBanwao.KaryKart.Web\AppBanwao.KarryKart.Model\bin\Release\EntityFramework.dll
+D:\My work\DA work\Repo\kk\AppBanwao.KaryKart.Web\AppBanwao.KarryKart.Model\bin\Release\EntityFramework.SqlServer.dll
+D:\My work\DA work\Repo\kk\AppBanwao.KaryKart.Web\AppBanwao.KarryKart.Model\bin\Release\EntityFramework.xml
+D:\My work\DA work\Repo\kk\AppBanwao.KaryKart.Web\AppBanwao.KarryKart.Model\bin\Release\EntityFramework.SqlServer.xml
+D:\My work\DA work\Repo\kk\AppBanwao.KaryKart.Web\AppBanwao.KarryKart.Model\obj\Release\AppBanwao.KarryKart.Model.csprojResolveAssemblyReference.cache
+D:\My work\DA work\Repo\kk\AppBanwao.KaryKart.Web\AppBanwao.KarryKart.Model\obj\Release\AppBanwao.KarryKart.Model.dll
+D:\My work\DA work\Repo\kk\AppBanwao.KaryKart.Web\AppBanwao.KarryKart.Model\obj\Release\AppBanwao.KarryKart.Model.pdb

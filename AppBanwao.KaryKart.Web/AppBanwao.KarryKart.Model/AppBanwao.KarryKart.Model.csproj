@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2732F345-029C-47C2-A909-9B73487A4104}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AppBanwao.KarryKart.Model</RootNamespace>
+    <AssemblyName>AppBanwao.KarryKart.Model</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Services.Client" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Brand.cs">
+      <DependentUpon>karrykart.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Category.cs">
+      <DependentUpon>karrykart.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Country.cs">
+      <DependentUpon>karrykart.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Coupon.cs">
+      <DependentUpon>karrykart.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CouponImage.cs">
+      <DependentUpon>karrykart.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CouponType.cs">
+      <DependentUpon>karrykart.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CouponValue.cs">
+      <DependentUpon>karrykart.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Currency.cs">
+      <DependentUpon>karrykart.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DeliverySlot.cs">
+      <DependentUpon>karrykart.tt</DependentUpon>
+    </Compile>
+    <Compile Include="karrykart.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>karrykart.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="karrykart.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>karrykart.tt</DependentUpon>
+    </Compile>
+    <Compile Include="karrykart.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>karrykart.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Log.cs">
+      <DependentUpon>karrykart.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelHelper.cs" />
+    <Compile Include="Offer.cs">
+      <DependentUpon>karrykart.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OTPHolder.cs">
+      <DependentUpon>karrykart.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Product.cs">
+      <DependentUpon>karrykart.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductFeature.cs">
+      <DependentUpon>karrykart.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductImage.cs">
+      <DependentUpon>karrykart.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductPrice.cs">
+      <DependentUpon>karrykart.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductShipping.cs">
+      <DependentUpon>karrykart.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductSizeMapping.cs">
+      <DependentUpon>karrykart.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="refCity.cs">
+      <DependentUpon>karrykart.tt</DependentUpon>
+    </Compile>
+    <Compile Include="refSaluation.cs">
+      <DependentUpon>karrykart.tt</DependentUpon>
+    </Compile>
+    <Compile Include="refState.cs">
+      <DependentUpon>karrykart.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Role.cs">
+      <DependentUpon>karrykart.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Size.cs">
+      <DependentUpon>karrykart.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SizeType.cs">
+      <DependentUpon>karrykart.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Slider.cs">
+      <DependentUpon>karrykart.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Subcategory.cs">
+      <DependentUpon>karrykart.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Unit.cs">
+      <DependentUpon>karrykart.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs">
+      <DependentUpon>karrykart.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserAddressDetail.cs">
+      <DependentUpon>karrykart.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserDetail.cs">
+      <DependentUpon>karrykart.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <EntityDeploy Include="karrykart.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>karrykart.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="karrykart.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>karrykart.edmx</DependentUpon>
+      <LastGenOutput>karrykart.Context.cs</LastGenOutput>
+    </None>
+    <None Include="karrykart.edmx.diagram">
+      <DependentUpon>karrykart.edmx</DependentUpon>
+    </None>
+    <None Include="karrykart.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>karrykart.edmx</DependentUpon>
+      <LastGenOutput>karrykart.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

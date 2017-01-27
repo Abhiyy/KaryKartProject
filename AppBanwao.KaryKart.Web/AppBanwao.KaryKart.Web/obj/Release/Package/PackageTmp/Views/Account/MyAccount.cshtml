@@ -1,0 +1,115 @@
+﻿@{
+    ViewBag.Title = "MyAccount";
+    Layout = "~/Views/Shared/_LayoutMaster.cshtml";
+}
+<script src="~/Scripts/App/MyAccountCtrl.js"></script>
+<div class="row">
+    <div class="col-md-12">
+        <ul class="breadcrumb">
+            <li><a href="@Url.Action("Index","Home")">Home</a></li>
+            <li><a href="@Url.Action("MyAccount","Account")">My Account</a></li>
+        </ul>
+    </div>
+</div>
+<div class="row">
+    <h3><i class="fa fa-user-secret"></i> My Account</h3>
+    <hr />
+    <div class="col-md-6" ng-controller="MyAccountController" ng-init="loaddata()">
+        <form name="myAccountForm" novalidate>
+            <h4>Please update in your details, if required.</h4>
+            <input type="hidden" ng-model="UserID" />
+            <div class="form-group">
+                <label for="Username">User name</label>
+                <input type="text" class="form-control" ng-model="Username" readonly="readonly">
+
+            </div>
+            <div class="form-group">
+                <label for="Salutaions">Salutation</label>
+                <select class="form-control" id="select" ng-model="SalutationID" ng-options="st.SID as st.Salutation for st in Salutaions" ng-init="SalutationID=1"></select>
+            </div>
+            <div class="form-group">
+                <label for="fName">First Name</label>
+                <input type="text" ng-model="fName" class="form-control" name="firstName" placeholder="First Name" ng-required="true">
+                <p class="help-block errorMessage" ng-show="myAccountForm.firstName.$invalid && !myAccountForm.firstName.$pristine">
+                    Firstname is required.
+                </p>
+            </div>
+
+            <div class="form-group">
+                <label for="lName">Last Name</label>
+                <input type="text" ng-model="lName" class="form-control" name="lastName" placeholder="Last Name" ng-required="true">
+                <p class="help-block errorMessage" ng-show="myAccountForm.lastName.$invalid && !myAccountForm.lastName.$pristine">
+                    Firstname is required.
+                </p>
+            </div>
+
+            <div class="form-group">
+                <label for="addressline1">Address Line 1</label>
+                <textarea ng-model="addressline1" class="form-control" name="ALine1" placeholder="House No + street No + locality" ng-required="true"></textarea>
+                <p class="help-block errorMessage" ng-show="myAccountForm.ALine1.$invalid && !myAccountForm.ALine1.$pristine">
+                    Address Line 1 is required.
+                </p>
+            </div>
+
+            <div class="form-group">
+                <label for="addressline2">Address Line 2</label>
+                <textarea ng-model="addressline2" class="form-control" name="ALine2" placeholder="Locality" ng-required="true"></textarea>
+                <p class="help-block errorMessage" ng-show="myAccountForm.ALine2.$invalid && !myAccountForm.ALine2.$pristine">
+                    Address Line 2 is required.
+                </p>
+            </div>
+
+            <div class="form-group">
+                <label for="landmark">Landmark</label>
+                <input type="text" ng-model="landmark" class="form-control" name="lndMark" placeholder="Nearest landmark" ng-required="true">
+                <p class="help-block errorMessage" ng-show="myAccountForm.lndMark.$invalid && !myAccountForm.lndMark.$pristine">
+                    Landmark is required.
+                </p>
+            </div>
+
+            <div class="form-group">
+                <label for="mobile">Mobile</label>
+                <input type="text" ng-model="mobile" class="form-control" name="mbile" placeholder="Mobile No" ng-required="true">
+                <p class="help-block errorMessage" ng-show="myAccountForm.mbile.$invalid && !myAccountForm.mbile.$pristine">
+                    Mobile is required.
+                </p>
+            </div>
+
+            <div class="form-group">
+                <label for="ctyID">City</label>
+                <select class="form-control" id="select" ng-model="ctyID" ng-options="ct.CityID as ct.Name for ct in cities" ng-init="ctyID=1"></select>
+            </div>
+
+            <div class="form-group">
+                <label for="StateID">State</label>
+                <select class="form-control" id="select" ng-model="StateID" ng-options="stt.StateID as stt.Name for stt in states" ng-init="StateID=1"></select>
+            </div>
+
+            <div class="form-group">
+                <label for="countryID">Country</label>
+                <select class="form-control" id="select" ng-model="countryID" ng-options="ctt.CountryID as ctt.CountryName for ctt in countries" ng-init="countryID=1"></select>
+            </div>
+
+            <div class="form-group">
+                <label for="pincode">Pincode</label>
+                <input type="text" ng-model="pincode" class="form-control" name="pc" placeholder="Pincode" ng-required="true">
+                <p class="help-block errorMessage" ng-show="myAccountForm.pc.$invalid && !myAccountForm.pc.$pristine">
+                    Pincode is required.
+                </p>
+            </div>
+
+            
+            <div class="form-group" ng-show="showmessage">
+                <label ng-model="errortype" class="text-{{errortype}}"> <span ng-bind-html="message"></span> </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary" ng-click="updateuserdata()"><i class="fa fa-edit"></i> Update Details</button>
+
+        </form>
+
+    </div>
+
+    
+</div>
+<hr />
+

@@ -1,0 +1,651 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="KarrykartModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="karrykartEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="Brands" EntityType="KarrykartModel.Brand" />
+    <EntitySet Name="Categories" EntityType="KarrykartModel.Category" />
+    <EntitySet Name="Countries" EntityType="KarrykartModel.Country" />
+    <EntitySet Name="Coupons" EntityType="KarrykartModel.Coupon" />
+    <EntitySet Name="CouponImages" EntityType="KarrykartModel.CouponImage" />
+    <EntitySet Name="CouponTypes" EntityType="KarrykartModel.CouponType" />
+    <EntitySet Name="CouponValues" EntityType="KarrykartModel.CouponValue" />
+    <EntitySet Name="Currencies" EntityType="KarrykartModel.Currency" />
+    <EntitySet Name="DeliverySlots" EntityType="KarrykartModel.DeliverySlot" />
+    <EntitySet Name="Logs" EntityType="KarrykartModel.Log" />
+    <EntitySet Name="Offers" EntityType="KarrykartModel.Offer" />
+    <EntitySet Name="OTPHolders" EntityType="KarrykartModel.OTPHolder" />
+    <EntitySet Name="Products" EntityType="KarrykartModel.Product" />
+    <EntitySet Name="ProductFeatures" EntityType="KarrykartModel.ProductFeature" />
+    <EntitySet Name="ProductImages" EntityType="KarrykartModel.ProductImage" />
+    <EntitySet Name="ProductPrices" EntityType="KarrykartModel.ProductPrice" />
+    <EntitySet Name="ProductShippings" EntityType="KarrykartModel.ProductShipping" />
+    <EntitySet Name="ProductSizeMappings" EntityType="KarrykartModel.ProductSizeMapping" />
+    <EntitySet Name="refCities" EntityType="KarrykartModel.refCity" />
+    <EntitySet Name="refSaluations" EntityType="KarrykartModel.refSaluation" />
+    <EntitySet Name="refStates" EntityType="KarrykartModel.refState" />
+    <EntitySet Name="Roles" EntityType="KarrykartModel.Role" />
+    <EntitySet Name="Sizes" EntityType="KarrykartModel.Size" />
+    <EntitySet Name="SizeTypes" EntityType="KarrykartModel.SizeType" />
+    <EntitySet Name="Sliders" EntityType="KarrykartModel.Slider" />
+    <EntitySet Name="Subcategories" EntityType="KarrykartModel.Subcategory" />
+    <EntitySet Name="Units" EntityType="KarrykartModel.Unit" />
+    <EntitySet Name="UserAddressDetails" EntityType="KarrykartModel.UserAddressDetail" />
+    <EntitySet Name="UserDetails" EntityType="KarrykartModel.UserDetail" />
+    <EntitySet Name="Users" EntityType="KarrykartModel.User" />
+    <AssociationSet Name="FK_Users_Roles" Association="KarrykartModel.FK_Users_Roles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserAddressDetail_Users" Association="KarrykartModel.FK_UserAddressDetail_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="UserAddressDetail" EntitySet="UserAddressDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserDetail_Users" Association="KarrykartModel.FK_UserDetail_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="UserDetail" EntitySet="UserDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Product__BrandID__3A81B327" Association="KarrykartModel.FK__Product__BrandID__3A81B327">
+      <End Role="Brand" EntitySet="Brands" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Product__BrandID__4222D4EF" Association="KarrykartModel.FK__Product__BrandID__4222D4EF">
+      <End Role="Brand" EntitySet="Brands" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Product__Categor__398D8EEE" Association="KarrykartModel.FK__Product__Categor__398D8EEE">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Product__Categor__412EB0B6" Association="KarrykartModel.FK__Product__Categor__412EB0B6">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Product__SubCate__3B75D760" Association="KarrykartModel.FK__Product__SubCate__3B75D760">
+      <End Role="Subcategory" EntitySet="Subcategories" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Product__SubCate__4316F928" Association="KarrykartModel.FK__Product__SubCate__4316F928">
+      <End Role="Subcategory" EntitySet="Subcategories" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProductFe__Produ__3C69FB99" Association="KarrykartModel.FK__ProductFe__Produ__3C69FB99">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="ProductFeature" EntitySet="ProductFeatures" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProductFe__Produ__440B1D61" Association="KarrykartModel.FK__ProductFe__Produ__440B1D61">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="ProductFeature" EntitySet="ProductFeatures" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProductIm__Produ__3D5E1FD2" Association="KarrykartModel.FK__ProductIm__Produ__3D5E1FD2">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="ProductImage" EntitySet="ProductImages" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProductIm__Produ__44FF419A" Association="KarrykartModel.FK__ProductIm__Produ__44FF419A">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="ProductImage" EntitySet="ProductImages" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProductPr__Produ__3E52440B" Association="KarrykartModel.FK__ProductPr__Produ__3E52440B">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="ProductPrice" EntitySet="ProductPrices" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProductPr__Produ__45F365D3" Association="KarrykartModel.FK__ProductPr__Produ__45F365D3">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="ProductPrice" EntitySet="ProductPrices" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProductSh__Produ__403A8C7D" Association="KarrykartModel.FK__ProductSh__Produ__403A8C7D">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="ProductShipping" EntitySet="ProductShippings" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProductSh__Produ__47DBAE45" Association="KarrykartModel.FK__ProductSh__Produ__47DBAE45">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="ProductShipping" EntitySet="ProductShippings" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProductSi__Produ__3F466844" Association="KarrykartModel.FK__ProductSi__Produ__3F466844">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="ProductSizeMapping" EntitySet="ProductSizeMappings" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProductSi__Produ__46E78A0C" Association="KarrykartModel.FK__ProductSi__Produ__46E78A0C">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="ProductSizeMapping" EntitySet="ProductSizeMappings" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Brand">
+    <Key>
+      <PropertyRef Name="BrandID" />
+    </Key>
+    <Property Name="BrandID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Products" Relationship="KarrykartModel.FK__Product__BrandID__3A81B327" FromRole="Brand" ToRole="Product" />
+    <NavigationProperty Name="Products1" Relationship="KarrykartModel.FK__Product__BrandID__4222D4EF" FromRole="Brand" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="CategoryID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Products" Relationship="KarrykartModel.FK__Product__Categor__398D8EEE" FromRole="Category" ToRole="Product" />
+    <NavigationProperty Name="Products1" Relationship="KarrykartModel.FK__Product__Categor__412EB0B6" FromRole="Category" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="CountryID" />
+    </Key>
+    <Property Name="CountryID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="CountryName" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Coupon">
+    <Key>
+      <PropertyRef Name="CouponID" />
+    </Key>
+    <Property Name="CouponID" Type="Guid" Nullable="false" />
+    <Property Name="DisplayName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CouponTypeID" Type="Int32" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="ExpiryDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="CouponImage">
+    <Key>
+      <PropertyRef Name="CouponImageID" />
+    </Key>
+    <Property Name="CouponImageID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="CouponID" Type="Guid" />
+    <Property Name="CouponImageurl" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="CouponType">
+    <Key>
+      <PropertyRef Name="CouponTypeID" />
+    </Key>
+    <Property Name="CouponTypeID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Type" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="CouponValue">
+    <Key>
+      <PropertyRef Name="CouponValueID" />
+    </Key>
+    <Property Name="CouponValueID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="CouponID" Type="Guid" />
+    <Property Name="CouponValue1" Type="Decimal" Precision="7" Scale="2" />
+  </EntityType>
+  <EntityType Name="Currency">
+    <Key>
+      <PropertyRef Name="CurrencyID" />
+    </Key>
+    <Property Name="CurrencyID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CountryID" Type="Int32" />
+    <Property Name="Shortform" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="DeliverySlot">
+    <Key>
+      <PropertyRef Name="DeliverySlotID" />
+    </Key>
+    <Property Name="DeliverySlotID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Slot" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Log">
+    <Key>
+      <PropertyRef Name="LogId" />
+    </Key>
+    <Property Name="LogId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="MessageType" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Message" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="MethodName" Type="String" MaxLength="70" Unicode="false" FixedLength="false" />
+    <Property Name="FileName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="UserName" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="EventTimeStamp" Type="DateTime" Precision="3" />
+    <Property Name="IpAddress" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="Browser" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Offer">
+    <Key>
+      <PropertyRef Name="OfferID" />
+    </Key>
+    <Property Name="OfferID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="OfferName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ImageLink" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="Active" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="OTPHolder">
+    <Key>
+      <PropertyRef Name="OTPID" />
+    </Key>
+    <Property Name="OTPID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="OTPValue" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="OTPAssignedTo" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="ProductID" Type="Guid" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="CategoryID" Type="Int32" />
+    <Property Name="BrandID" Type="Int32" />
+    <Property Name="SubCategoryID" Type="Int32" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="Active" Type="Boolean" />
+    <NavigationProperty Name="Brand" Relationship="KarrykartModel.FK__Product__BrandID__3A81B327" FromRole="Product" ToRole="Brand" />
+    <NavigationProperty Name="Brand1" Relationship="KarrykartModel.FK__Product__BrandID__4222D4EF" FromRole="Product" ToRole="Brand" />
+    <NavigationProperty Name="Category" Relationship="KarrykartModel.FK__Product__Categor__398D8EEE" FromRole="Product" ToRole="Category" />
+    <NavigationProperty Name="Category1" Relationship="KarrykartModel.FK__Product__Categor__412EB0B6" FromRole="Product" ToRole="Category" />
+    <NavigationProperty Name="Subcategory" Relationship="KarrykartModel.FK__Product__SubCate__3B75D760" FromRole="Product" ToRole="Subcategory" />
+    <NavigationProperty Name="Subcategory1" Relationship="KarrykartModel.FK__Product__SubCate__4316F928" FromRole="Product" ToRole="Subcategory" />
+    <NavigationProperty Name="ProductFeatures" Relationship="KarrykartModel.FK__ProductFe__Produ__3C69FB99" FromRole="Product" ToRole="ProductFeature" />
+    <NavigationProperty Name="ProductFeatures1" Relationship="KarrykartModel.FK__ProductFe__Produ__440B1D61" FromRole="Product" ToRole="ProductFeature" />
+    <NavigationProperty Name="ProductImages" Relationship="KarrykartModel.FK__ProductIm__Produ__3D5E1FD2" FromRole="Product" ToRole="ProductImage" />
+    <NavigationProperty Name="ProductImages1" Relationship="KarrykartModel.FK__ProductIm__Produ__44FF419A" FromRole="Product" ToRole="ProductImage" />
+    <NavigationProperty Name="ProductPrices" Relationship="KarrykartModel.FK__ProductPr__Produ__3E52440B" FromRole="Product" ToRole="ProductPrice" />
+    <NavigationProperty Name="ProductPrices1" Relationship="KarrykartModel.FK__ProductPr__Produ__45F365D3" FromRole="Product" ToRole="ProductPrice" />
+    <NavigationProperty Name="ProductShippings" Relationship="KarrykartModel.FK__ProductSh__Produ__403A8C7D" FromRole="Product" ToRole="ProductShipping" />
+    <NavigationProperty Name="ProductShippings1" Relationship="KarrykartModel.FK__ProductSh__Produ__47DBAE45" FromRole="Product" ToRole="ProductShipping" />
+    <NavigationProperty Name="ProductSizeMappings" Relationship="KarrykartModel.FK__ProductSi__Produ__3F466844" FromRole="Product" ToRole="ProductSizeMapping" />
+    <NavigationProperty Name="ProductSizeMappings1" Relationship="KarrykartModel.FK__ProductSi__Produ__46E78A0C" FromRole="Product" ToRole="ProductSizeMapping" />
+  </EntityType>
+  <EntityType Name="ProductFeature">
+    <Key>
+      <PropertyRef Name="FeatureID" />
+    </Key>
+    <Property Name="FeatureID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductID" Type="Guid" />
+    <Property Name="Feature" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Product" Relationship="KarrykartModel.FK__ProductFe__Produ__3C69FB99" FromRole="ProductFeature" ToRole="Product" />
+    <NavigationProperty Name="Product1" Relationship="KarrykartModel.FK__ProductFe__Produ__440B1D61" FromRole="ProductFeature" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="ProductImage">
+    <Key>
+      <PropertyRef Name="ImageID" />
+    </Key>
+    <Property Name="ImageID" Type="Guid" Nullable="false" />
+    <Property Name="ProductID" Type="Guid" />
+    <Property Name="ImageLink" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Product" Relationship="KarrykartModel.FK__ProductIm__Produ__3D5E1FD2" FromRole="ProductImage" ToRole="Product" />
+    <NavigationProperty Name="Product1" Relationship="KarrykartModel.FK__ProductIm__Produ__44FF419A" FromRole="ProductImage" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="ProductPrice">
+    <Key>
+      <PropertyRef Name="PriceID" />
+    </Key>
+    <Property Name="PriceID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="SizeID" Type="Int32" />
+    <Property Name="ProductID" Type="Guid" />
+    <Property Name="Price" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="CurrencyID" Type="Int32" />
+    <NavigationProperty Name="Product" Relationship="KarrykartModel.FK__ProductPr__Produ__3E52440B" FromRole="ProductPrice" ToRole="Product" />
+    <NavigationProperty Name="Product1" Relationship="KarrykartModel.FK__ProductPr__Produ__45F365D3" FromRole="ProductPrice" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="ProductShipping">
+    <Key>
+      <PropertyRef Name="ShippingCostID" />
+    </Key>
+    <Property Name="ShippingCostID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="SizeID" Type="Int32" />
+    <Property Name="ProductID" Type="Guid" />
+    <Property Name="Cost" Type="Decimal" Precision="7" Scale="2" />
+    <NavigationProperty Name="Product" Relationship="KarrykartModel.FK__ProductSh__Produ__403A8C7D" FromRole="ProductShipping" ToRole="Product" />
+    <NavigationProperty Name="Product1" Relationship="KarrykartModel.FK__ProductSh__Produ__47DBAE45" FromRole="ProductShipping" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="ProductSizeMapping">
+    <Key>
+      <PropertyRef Name="ProductSizeMappingID" />
+    </Key>
+    <Property Name="ProductSizeMappingID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductID" Type="Guid" />
+    <Property Name="SizeID" Type="Int32" />
+    <Property Name="UnitID" Type="Int32" />
+    <Property Name="Stock" Type="Int32" />
+    <NavigationProperty Name="Product" Relationship="KarrykartModel.FK__ProductSi__Produ__3F466844" FromRole="ProductSizeMapping" ToRole="Product" />
+    <NavigationProperty Name="Product1" Relationship="KarrykartModel.FK__ProductSi__Produ__46E78A0C" FromRole="ProductSizeMapping" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="refCity">
+    <Key>
+      <PropertyRef Name="CityID" />
+    </Key>
+    <Property Name="CityID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="refSaluation">
+    <Key>
+      <PropertyRef Name="SID" />
+    </Key>
+    <Property Name="SID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Salutation" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="refState">
+    <Key>
+      <PropertyRef Name="StateID" />
+    </Key>
+    <Property Name="StateID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Users" Relationship="KarrykartModel.FK_Users_Roles" FromRole="Roles" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Size">
+    <Key>
+      <PropertyRef Name="SizeID" />
+    </Key>
+    <Property Name="SizeID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="SizeTypeID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="SizeType">
+    <Key>
+      <PropertyRef Name="SizeTypeID" />
+    </Key>
+    <Property Name="SizeTypeID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Slider">
+    <Key>
+      <PropertyRef Name="SliderID" />
+    </Key>
+    <Property Name="SliderID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="OfferHeading" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="ImageLink" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+    <Property Name="Offer" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+    <Property Name="SlideOrder" Type="Int32" />
+    <Property Name="Active" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Subcategory">
+    <Key>
+      <PropertyRef Name="SCategoryID" />
+    </Key>
+    <Property Name="SCategoryID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="CategoryID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Products" Relationship="KarrykartModel.FK__Product__SubCate__3B75D760" FromRole="Subcategory" ToRole="Product" />
+    <NavigationProperty Name="Products1" Relationship="KarrykartModel.FK__Product__SubCate__4316F928" FromRole="Subcategory" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Unit">
+    <Key>
+      <PropertyRef Name="UnitID" />
+    </Key>
+    <Property Name="UnitID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="UserAddressDetail">
+    <Key>
+      <PropertyRef Name="AddressID" />
+    </Key>
+    <Property Name="AddressID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Guid" />
+    <Property Name="AddressLine1" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+    <Property Name="AddressLine2" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+    <Property Name="CityID" Type="Int32" />
+    <Property Name="StateID" Type="Int32" />
+    <Property Name="CountryID" Type="Int32" />
+    <Property Name="Pincode" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="Landmark" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="User" Relationship="KarrykartModel.FK_UserAddressDetail_Users" FromRole="UserAddressDetail" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="UserDetail">
+    <Key>
+      <PropertyRef Name="UserDetailsID" />
+    </Key>
+    <Property Name="UserDetailsID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Guid" />
+    <Property Name="Salutation" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="FirstName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="User" Relationship="KarrykartModel.FK_UserDetail_Users" FromRole="UserDetail" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Guid" Nullable="false" />
+    <Property Name="EmailAddress" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="Mobile" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="Password" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="DateCreated" Type="DateTime" Precision="3" />
+    <Property Name="LastUpdated" Type="DateTime" Precision="3" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="RoleID" Type="Int32" />
+    <Property Name="ProfileComplete" Type="Boolean" />
+    <NavigationProperty Name="Role" Relationship="KarrykartModel.FK_Users_Roles" FromRole="Users" ToRole="Roles" />
+    <NavigationProperty Name="UserAddressDetails" Relationship="KarrykartModel.FK_UserAddressDetail_Users" FromRole="Users" ToRole="UserAddressDetail" />
+    <NavigationProperty Name="UserDetails" Relationship="KarrykartModel.FK_UserDetail_Users" FromRole="Users" ToRole="UserDetail" />
+  </EntityType>
+  <Association Name="FK_Users_Roles">
+    <End Role="Roles" Type="KarrykartModel.Role" Multiplicity="0..1" />
+    <End Role="Users" Type="KarrykartModel.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="RoleID" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserAddressDetail_Users">
+    <End Role="Users" Type="KarrykartModel.User" Multiplicity="0..1" />
+    <End Role="UserAddressDetail" Type="KarrykartModel.UserAddressDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="UserAddressDetail">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserDetail_Users">
+    <End Role="Users" Type="KarrykartModel.User" Multiplicity="0..1" />
+    <End Role="UserDetail" Type="KarrykartModel.UserDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="UserDetail">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Product__BrandID__3A81B327">
+    <End Type="KarrykartModel.Brand" Role="Brand" Multiplicity="0..1" />
+    <End Type="KarrykartModel.Product" Role="Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Brand">
+        <PropertyRef Name="BrandID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="BrandID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Product__BrandID__4222D4EF">
+    <End Type="KarrykartModel.Brand" Role="Brand" Multiplicity="0..1" />
+    <End Type="KarrykartModel.Product" Role="Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Brand">
+        <PropertyRef Name="BrandID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="BrandID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Product__Categor__398D8EEE">
+    <End Type="KarrykartModel.Category" Role="Category" Multiplicity="0..1" />
+    <End Type="KarrykartModel.Product" Role="Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Product__Categor__412EB0B6">
+    <End Type="KarrykartModel.Category" Role="Category" Multiplicity="0..1" />
+    <End Type="KarrykartModel.Product" Role="Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Product__SubCate__3B75D760">
+    <End Type="KarrykartModel.Subcategory" Role="Subcategory" Multiplicity="0..1" />
+    <End Type="KarrykartModel.Product" Role="Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subcategory">
+        <PropertyRef Name="SCategoryID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="SubCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Product__SubCate__4316F928">
+    <End Type="KarrykartModel.Subcategory" Role="Subcategory" Multiplicity="0..1" />
+    <End Type="KarrykartModel.Product" Role="Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subcategory">
+        <PropertyRef Name="SCategoryID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="SubCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProductFe__Produ__3C69FB99">
+    <End Type="KarrykartModel.Product" Role="Product" Multiplicity="0..1" />
+    <End Type="KarrykartModel.ProductFeature" Role="ProductFeature" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="ProductFeature">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProductFe__Produ__440B1D61">
+    <End Type="KarrykartModel.Product" Role="Product" Multiplicity="0..1" />
+    <End Type="KarrykartModel.ProductFeature" Role="ProductFeature" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="ProductFeature">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProductIm__Produ__3D5E1FD2">
+    <End Type="KarrykartModel.Product" Role="Product" Multiplicity="0..1" />
+    <End Type="KarrykartModel.ProductImage" Role="ProductImage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="ProductImage">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProductIm__Produ__44FF419A">
+    <End Type="KarrykartModel.Product" Role="Product" Multiplicity="0..1" />
+    <End Type="KarrykartModel.ProductImage" Role="ProductImage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="ProductImage">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProductPr__Produ__3E52440B">
+    <End Type="KarrykartModel.Product" Role="Product" Multiplicity="0..1" />
+    <End Type="KarrykartModel.ProductPrice" Role="ProductPrice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="ProductPrice">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProductPr__Produ__45F365D3">
+    <End Type="KarrykartModel.Product" Role="Product" Multiplicity="0..1" />
+    <End Type="KarrykartModel.ProductPrice" Role="ProductPrice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="ProductPrice">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProductSh__Produ__403A8C7D">
+    <End Type="KarrykartModel.Product" Role="Product" Multiplicity="0..1" />
+    <End Type="KarrykartModel.ProductShipping" Role="ProductShipping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="ProductShipping">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProductSh__Produ__47DBAE45">
+    <End Type="KarrykartModel.Product" Role="Product" Multiplicity="0..1" />
+    <End Type="KarrykartModel.ProductShipping" Role="ProductShipping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="ProductShipping">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProductSi__Produ__3F466844">
+    <End Type="KarrykartModel.Product" Role="Product" Multiplicity="0..1" />
+    <End Type="KarrykartModel.ProductSizeMapping" Role="ProductSizeMapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="ProductSizeMapping">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProductSi__Produ__46E78A0C">
+    <End Type="KarrykartModel.Product" Role="Product" Multiplicity="0..1" />
+    <End Type="KarrykartModel.ProductSizeMapping" Role="ProductSizeMapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="ProductSizeMapping">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

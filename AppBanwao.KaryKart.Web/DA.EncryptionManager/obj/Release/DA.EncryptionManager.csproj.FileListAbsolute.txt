@@ -1,0 +1,10 @@
+D:\My work\DA work\Product\DA.ShopCart.Web\DA.ShopCart.Web\DA.EncryptionManager\bin\Release\DA.EncryptionManager.dll
+D:\My work\DA work\Product\DA.ShopCart.Web\DA.ShopCart.Web\DA.EncryptionManager\bin\Release\DA.EncryptionManager.pdb
+D:\My work\DA work\Product\DA.ShopCart.Web\DA.ShopCart.Web\DA.EncryptionManager\obj\Release\DA.EncryptionManager.csprojResolveAssemblyReference.cache
+D:\My work\DA work\Product\DA.ShopCart.Web\DA.ShopCart.Web\DA.EncryptionManager\obj\Release\DA.EncryptionManager.dll
+D:\My work\DA work\Product\DA.ShopCart.Web\DA.ShopCart.Web\DA.EncryptionManager\obj\Release\DA.EncryptionManager.pdb
+D:\My work\DA work\Repo\kk\AppBanwao.KaryKart.Web\DA.EncryptionManager\bin\Release\DA.EncryptionManager.dll
+D:\My work\DA work\Repo\kk\AppBanwao.KaryKart.Web\DA.EncryptionManager\bin\Release\DA.EncryptionManager.pdb
+D:\My work\DA work\Repo\kk\AppBanwao.KaryKart.Web\DA.EncryptionManager\obj\Release\DA.EncryptionManager.csprojResolveAssemblyReference.cache
+D:\My work\DA work\Repo\kk\AppBanwao.KaryKart.Web\DA.EncryptionManager\obj\Release\DA.EncryptionManager.dll
+D:\My work\DA work\Repo\kk\AppBanwao.KaryKart.Web\DA.EncryptionManager\obj\Release\DA.EncryptionManager.pdb

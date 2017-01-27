@@ -1,0 +1,54 @@
+﻿@{
+    ViewBag.Title = "CreateSize";
+    Layout = "~/Views/Shared/_LayoutMaster.cshtml";
+}
+
+@model AppBanwao.KaryKart.Web.Models.SizeModel
+<div class="row">
+
+    <div class="col-md-12">
+        <ul class="breadcrumb">
+            <li><a href="@Url.Action("Index","Home")">Home</a></li>
+            <li><a href="@Url.Action("SizeDetails","ProductSettings")">Product Settings - Size Type</a></li>
+            <li class="active">Create new size type</li>
+        </ul>
+    </div>
+</div>
+<div class="row">
+    <h3><i class="fa fa-upload"></i> Create</h3>
+    <hr />
+    <div class="col-md-10">
+
+        @using (Html.BeginForm("CreateSize", "ProductSettings", FormMethod.Post, new { @class = "form-horizontal" }))
+        {
+
+
+            @Html.AntiForgeryToken()
+            <div class="form-group">
+
+                @Html.LabelFor(m => m.SizeName, new { @class = "col-lg-3 control-label" })
+                <div class="col-lg-7">
+                    @Html.TextBoxFor(m => m.SizeName, new { @class = "form-control", @placeholder = "e.g. garments" })
+                    @Html.ValidationMessageFor(m => m.SizeName, null, new { @class = "text-danger" })
+                </div>
+            </div>
+    <div class="form-group">
+
+        @Html.LabelFor(m => m.SizeType,new { @class = "col-lg-3 control-label" })
+        <div class="col-lg-7">
+            @Html.DropDownListFor(m => m.SizeType,(SelectList)ViewBag.SizeType ,new { @class = "form-control", @placeholder = "e.g. garments" })
+            @Html.ValidationMessageFor(m => m.SizeType, null, new { @class = "text-danger" })
+        </div>
+    </div>
+            <div class="form-group">
+                <div class="col-lg-10 col-lg-offset-3">
+
+                    <button type="submit" class="btn btn-success blueButton">Create <i class="fa fa-plus"></i></button>
+                    <hr />
+                    <a href="@Url.Action("SizeDetails","ProductSettings")" class="btn btn-danger">Back <i class="fa fa-backward"></i> </a>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>

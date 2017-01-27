@@ -1,0 +1,89 @@
+﻿@{
+    ViewBag.Title = "AddImageFeatureDetails";
+    Layout = "~/Views/Shared/_LayoutMaster.cshtml";
+}
+
+@model AppBanwao.KaryKart.Web.Models.ProductModel
+<div class="row">
+
+    <div class="col-md-12">
+        <ul class="breadcrumb">
+            <li><a href="@Url.Action("Index","Home")">Home</a></li>
+            <li><a href="@Url.Action("Index","Product")">Products</a></li>
+            <li class="active">Add Image and Feture Product</li>
+        </ul>
+    </div>
+</div>
+<div class="row ">
+    <ul class="pagination pagination-lg">
+
+        <li ><a href="#">Product Basic details <i class="fa fa-forward"></i></a></li>
+        <li class="active"><a href="#">Features and Images Details <i class="fa fa-forward"></i></a></li>
+        <li><a href="#">Stock and Cost Details <i class="fa fa-stop"></i></a></li>
+
+
+    </ul>
+</div>
+<div class="row">
+    <h3><i class="fa fa-plus-square-o"></i> Add Features and Images</h3>
+    <hr />
+    <div class="col-md-10">
+
+        @using (Html.BeginForm("AddImageFeatureDetails", "Product", FormMethod.Post, new { @class = "form-horizontal", @enctype="multipart/form-data" }))
+        {
+
+
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(m=>m.ProductID)
+            <div class="form-group">
+
+                @Html.LabelFor(m => m.Name, new { @class = "col-lg-3 control-label" })
+                <div class="col-lg-7">
+                    @Html.DisplayFor(m => m.Name)
+                    
+                </div>
+            </div>
+            <div class="form-group">
+
+                @Html.LabelFor(m => m.Features, new { @class = "col-lg-3 control-label" })
+                <div class="col-lg-7">
+                    @Html.TextAreaFor(m => m.Features, new { @class = "form-control", @placeholder = "e.g. features of the product" })
+                    @Html.ValidationMessageFor(m => m.Features, null, new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+
+                @Html.LabelFor(m => m.Image1, new { @class = "col-lg-3 control-label" })
+                <div class="col-lg-7">
+                    <input name="Image1" id="Image1" type="file" />
+                    @Html.ValidationMessageFor(m => m.Image1, null, new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+
+                @Html.LabelFor(m => m.Image2, new { @class = "col-lg-3 control-label" })
+                <div class="col-lg-7">
+                    <input name="Image2" id="Image2" type="file" />
+                    @Html.ValidationMessageFor(m => m.Image2, null, new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+
+                @Html.LabelFor(m => m.Image3, new { @class = "col-lg-3 control-label" })
+                <div class="col-lg-7">
+                    <input name="Image3" id="Image3" type="file" />
+                    @Html.ValidationMessageFor(m => m.Image3, null, new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-10 col-lg-offset-3">
+
+                    <button type="submit" class="btn btn-success blueButton">Next <i class="fa fa-forward"></i></button>
+                    @*<hr />
+                    <a href="@Url.Action("Index","Product")" class="btn btn-danger">Back <i class="fa fa-backward"></i> </a>*@
+                </div>
+            </div>
+
+        }
+    </div>
+</div>

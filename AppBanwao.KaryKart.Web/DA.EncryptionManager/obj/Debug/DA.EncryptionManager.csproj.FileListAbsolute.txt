@@ -1,0 +1,15 @@
+D:\My work\DA work\samples\DA.MuzicLover\DA.EncryptionManager\bin\Debug\DA.EncryptionManager.dll
+D:\My work\DA work\samples\DA.MuzicLover\DA.EncryptionManager\bin\Debug\DA.EncryptionManager.pdb
+D:\My work\DA work\samples\DA.MuzicLover\DA.EncryptionManager\obj\Debug\DA.EncryptionManager.csprojResolveAssemblyReference.cache
+D:\My work\DA work\samples\DA.MuzicLover\DA.EncryptionManager\obj\Debug\DA.EncryptionManager.dll
+D:\My work\DA work\samples\DA.MuzicLover\DA.EncryptionManager\obj\Debug\DA.EncryptionManager.pdb
+D:\My work\DA work\Product\DA.ShopCart.Web\DA.ShopCart.Web\DA.EncryptionManager\bin\Debug\DA.EncryptionManager.dll
+D:\My work\DA work\Product\DA.ShopCart.Web\DA.ShopCart.Web\DA.EncryptionManager\bin\Debug\DA.EncryptionManager.pdb
+D:\My work\DA work\Product\DA.ShopCart.Web\DA.ShopCart.Web\DA.EncryptionManager\obj\Debug\DA.EncryptionManager.csprojResolveAssemblyReference.cache
+D:\My work\DA work\Product\DA.ShopCart.Web\DA.ShopCart.Web\DA.EncryptionManager\obj\Debug\DA.EncryptionManager.dll
+D:\My work\DA work\Product\DA.ShopCart.Web\DA.ShopCart.Web\DA.EncryptionManager\obj\Debug\DA.EncryptionManager.pdb
+D:\My work\DA work\Repo\kk\AppBanwao.KaryKart.Web\DA.EncryptionManager\bin\Debug\DA.EncryptionManager.dll
+D:\My work\DA work\Repo\kk\AppBanwao.KaryKart.Web\DA.EncryptionManager\bin\Debug\DA.EncryptionManager.pdb
+D:\My work\DA work\Repo\kk\AppBanwao.KaryKart.Web\DA.EncryptionManager\obj\Debug\DA.EncryptionManager.csprojResolveAssemblyReference.cache
+D:\My work\DA work\Repo\kk\AppBanwao.KaryKart.Web\DA.EncryptionManager\obj\Debug\DA.EncryptionManager.dll
+D:\My work\DA work\Repo\kk\AppBanwao.KaryKart.Web\DA.EncryptionManager\obj\Debug\DA.EncryptionManager.pdb

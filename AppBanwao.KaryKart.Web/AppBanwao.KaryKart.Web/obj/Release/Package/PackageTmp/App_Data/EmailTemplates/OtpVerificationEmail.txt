@@ -1,0 +1,26 @@
+﻿<html>
+<head>
+
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+</head>
+<body style="color:grey; font-size:15px;">
+<font face="Helvetica, Arial, sans-serif">
+
+<div style="position:absolute; text-align:center;height:100px; width:600px; padding:30px;">
+<img src={0} />
+<p>Food-Groceries-Cakes</p>
+</div>
+
+<div style="background-color: #FBF5EF;width:600px; height:200px; padding:30px; margin-top:5px;">
+<div style='align:center'><img src={1} alt='Welcome Image' /> </div>
+<p>Dear {2},</p>
+
+<p>Your eamil has been verified successfully. You can start shopping and order online with us.</p>
+<a href = 'http://www.karrykart.com' style='background-color:#0489B1;color:#fff;border-radius:5px;padding:5px;font-size:16px;text-decoration:none'>Shop now</a>
+<br/>
+<p>Please contact us on {3}, in case of any issue.</p>
+<p>Thank you</p>
+<p>KarryKart Team</p>
+</div>
+</body>
+</html>

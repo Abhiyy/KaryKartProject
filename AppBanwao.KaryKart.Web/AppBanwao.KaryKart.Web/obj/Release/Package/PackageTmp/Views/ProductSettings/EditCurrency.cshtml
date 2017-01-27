@@ -1,0 +1,62 @@
+﻿@{
+    ViewBag.Title = "EditCurrency";
+    Layout = "~/Views/Shared/_LayoutMaster.cshtml";
+}
+@model AppBanwao.KaryKart.Web.Models.CurrencyModel
+<div class="row">
+
+    <div class="col-md-12">
+        <ul class="breadcrumb">
+            <li><a href="@Url.Action("Index","Home")">Home</a></li>
+            <li><a href="@Url.Action("CurrencyDetails","ProductSettings")">Product Settings - CurrencyDetails</a></li>
+            <li class="active">Edit currency</li>
+        </ul>
+    </div>
+</div>
+<div class="row">
+    <h3><i class="fa fa-edit"></i> Edit currency</h3>
+    <hr />
+    <div class="col-md-10">
+
+        @using (Html.BeginForm("EditCurrency", "ProductSettings", FormMethod.Post, new { @class = "form-horizontal" }))
+        {
+
+
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(m=>m.CurrencyID)
+            <div class="form-group">
+
+                @Html.LabelFor(m => m.CurrencyName, new { @class = "col-lg-3 control-label" })
+                <div class="col-lg-7">
+                    @Html.TextBoxFor(m => m.CurrencyName, new { @class = "form-control", @placeholder = "e.g. rupees" })
+                    @Html.ValidationMessageFor(m => m.CurrencyName, null, new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+
+                @Html.LabelFor(m => m.ShortName, new { @class = "col-lg-3 control-label" })
+                <div class="col-lg-7">
+                    @Html.TextBoxFor(m => m.ShortName, new { @class = "form-control", @placeholder = "e.g.INR" })
+                    @Html.ValidationMessageFor(m => m.ShortName, null, new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+
+                @Html.LabelFor(m => m.CountryID, new { @class = "col-lg-3 control-label" })
+                <div class="col-lg-7">
+                    @Html.DropDownListFor(m => m.CountryID, (SelectList)ViewBag.CountryID, new { @class = "form-control", @placeholder = "e.g. garments" })
+                    @Html.ValidationMessageFor(m => m.CountryID, null, new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-10 col-lg-offset-3">
+
+                    <button type="submit" class="btn btn-success blueButton">Edit <i class="fa fa-edit"></i></button>
+                    <hr />
+                    <a href="@Url.Action("CurrencyDetails","ProductSettings")" class="btn btn-danger">Back <i class="fa fa-backward"></i> </a>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>

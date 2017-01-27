@@ -1,0 +1,173 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutMaster.cshtml";
+}
+@model AppBanwao.KaryKart.Web.Models.ProductDetailsModel
+<div class="row">
+
+    <div class="col-md-12">
+        <ul class="breadcrumb">
+            <li><a href="@Url.Action("Index","Home")">Home</a></li>
+            <li><a href="@Url.Action("Index","Product")">Product</a></li>
+            <li class="active">Details</li>
+        </ul>
+    </div>
+</div>
+<div class="row">
+
+    <div class="col-md-10">
+
+        @using (Html.BeginForm("", "", FormMethod.Post, new { @class = "form-horizontal" }))
+        {
+
+            <h3>Product Details</h3>
+            <hr />
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(m => m.ProductID)
+            <div class="form-group">
+
+                <label class="col-lg-3 control-label">Name</label>
+                <div class="col-lg-7">
+                    @Html.DisplayFor(m => m.Name)
+
+                </div>
+            </div>
+            <div class="form-group">
+
+                <label class="col-lg-3 control-label">Description</label>
+                <div class="col-lg-7">
+                    @Html.DisplayFor(m => m.Description)
+
+                </div>
+            </div>
+            <div class="form-group">
+
+                <label class="col-lg-3 control-label">Category</label>
+                <div class="col-lg-7">
+                    @Html.DisplayFor(m => m.CategoryName)
+
+                </div>
+            </div>
+
+            <div class="form-group">
+
+                <label class="col-lg-3 control-label">Sub Category</label>
+                <div class="col-lg-7">
+                    @Html.DisplayFor(m => m.SubCategoryName)
+
+                </div>
+            </div>
+
+            <div class="form-group">
+
+                <label class="col-lg-3 control-label">Brand</label>
+                <div class="col-lg-7">
+                    @Html.DisplayFor(m => m.BrandName)
+
+                </div>
+            </div>
+
+            <div class="form-group">
+
+                <label class="col-lg-3 control-label">Active</label>
+                <div class="col-lg-7">
+                    @if (Model.Active)
+                    {
+                        <span>Yes</span>
+                    }
+                    else
+                    {
+                        {
+                            <span>No</span>
+                        }
+                    }
+
+                </div>
+            </div>
+
+
+
+            <h3>Product Features & Image Details</h3>
+            <hr />
+            <div class="form-group">
+
+                <label class="col-lg-3 control-label">Features</label>
+                <div class="col-lg-7">
+
+                    @foreach (var feature in Model.Features)
+                    {
+                        <i class="fa fa-check"></i> <span>@feature.Feature</span><br />
+                    }
+
+
+                </div>
+            </div>
+
+            <div class="form-group">
+
+
+
+                <label class="col-lg-3 control-label">Images</label><br />
+                <div class="col-lg-7">
+                    @foreach (var imgLink in Model.Images)
+                    {
+                        <img src="@Url.Content(imgLink.ImageLink)" class="img img-responsive" style="width:20%" />
+                    }
+                </div>
+
+            </div>
+
+
+
+            <h3>Product Stock & Price Details</h3>
+            <hr />
+
+            <div class="form-group">
+
+
+                <div class="col-lg-10">
+                    <table class="table table-striped table-hover ">
+                        <thead>
+                            <tr>
+
+                                <th>Size Name</th>
+                                <th>Unit Name</th>
+                                <th>Size Type</th>
+                                <th>Price (per unit)</th>
+                                <th>Shipping Cost (per unit)</th>
+                                <th>Stock</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var row in Model.ProductSizeMappings)
+                            {
+                                <tr>
+                                    <td>@row.SizeName </td>
+                                    <td>@row.UnitName</td>
+                                    <td>@row.SizeTypeName</td>
+                                    <td>@Model.Prices.Where(x => x.SizeID == row.SizeID).FirstOrDefault().Price</td>
+                                    <td>@Model.ShippingDetails.Where(x => x.SizeID == row.SizeID).FirstOrDefault().Cost</td>
+                                    <td>@row.Stock</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                   
+
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-lg-10">
+                    <a href="@Url.Action("Edit", "Product", new { id = Model.ProductID })" class="btn btn-success bluebutton">Edit Product Details <i class="fa fa-edit"></i></a>
+                    
+                    <hr />
+                    <a href="@Url.Action("Index","Category")" class="btn btn-danger">Back <i class="fa fa-backward"></i> </a>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>

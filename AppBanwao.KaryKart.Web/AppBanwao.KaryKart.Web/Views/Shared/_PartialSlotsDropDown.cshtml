@@ -1,0 +1,10 @@
+﻿@{
+    var lstSlots = new AppBanwao.KarryKart.Model.karrykartEntities().DeliverySlots.ToList();
+}
+<select class="slotDropdown" id="select">
+   
+    @foreach (var slot in lstSlots)
+    {
+        <option id="@slot.DeliverySlotID">@slot.Slot</option>
+    }
+</select>

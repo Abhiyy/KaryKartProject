@@ -1,0 +1,133 @@
+﻿ @{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutMaster.cshtml";
+}
+<link href="~/Content/kendo/2017.1.118/kendo.common.min.css" rel="stylesheet" />
+<link href="~/Content/kendo/2017.1.118/kendo.default.min.css" rel="stylesheet" />
+
+<script src="http://kendo.cdn.telerik.com/2017.1.118/js/kendo.all.min.js"></script>
+
+@model AppBanwao.KaryKart.Web.Models.ProductModel
+       <div class="row">
+
+    <div class="col-md-12">
+        <ul class="breadcrumb">
+            <li><a href="@Url.Action("Index","Home")">Home</a></li>
+            <li><a href="@Url.Action("Index","Product")">Products</a></li>
+            <li class="active">Create Product</li>
+        </ul>
+    </div>
+</div>
+<div class="row ">
+    <ul class="pagination pagination-lg">
+        
+        <li class="active"><a href="#">Product Basic details <i class="fa fa-forward"></i></a></li>
+        <li><a href="#">Features and Images Details <i class="fa fa-forward"></i></a></li>
+        <li><a href="#">Stock and Cost Details <i class="fa fa-stop"></i></a></li>
+        
+        
+    </ul>
+</div>
+<div class="row">
+    <h3><i class="fa fa-plus-square-o"></i> Create Product</h3>
+    <hr />
+    <div class="col-md-10">
+
+        @using (Html.BeginForm("Create", "Product", FormMethod.Post, new { @class = "form-horizontal" }))
+        {
+
+
+            @Html.AntiForgeryToken()
+            <div class="form-group">
+
+                @Html.LabelFor(m => m.Name, new { @class = "col-lg-3 control-label" })
+                <div class="col-lg-7">
+                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @placeholder = "e.g. Arhar Dal" })
+                    @Html.ValidationMessageFor(m => m.Name, null, new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+
+                @Html.LabelFor(m => m.Description, new { @class = "col-lg-3 control-label" })
+                <div class="col-lg-7">
+                    @Html.TextAreaFor(m => m.Description, new { @id = "Description", @class = "form-control", @placeholder = "e.g. description of the product" })
+                    @Html.ValidationMessageFor(m => m.Description, null, new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+
+                @Html.LabelFor(m => m.CategoryID, new { @class = "col-lg-3 control-label" })
+                <div class="col-lg-7">
+                    @Html.DropDownListFor(m => m.CategoryID, (SelectList)ViewBag.CategoryID, new { @class = "form-control"})
+                    @Html.ValidationMessageFor(m => m.CategoryID, null, new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+
+        @Html.LabelFor(m => m.SubCategoryID, new { @class = "col-lg-3 control-label" })
+        <div class="col-lg-7">
+            @Html.DropDownListFor(m => m.SubCategoryID, (SelectList)ViewBag.SubcategoryID, new { @class = "form-control", @placeholder = "e.g. garments" })
+            @Html.ValidationMessageFor(m => m.SubCategoryID, null, new { @class = "text-danger" })
+        </div>
+    </div>
+            <div class="form-group">
+
+        @Html.LabelFor(m => m.BrandID, new { @class = "col-lg-3 control-label" })
+        <div class="col-lg-7">
+            @Html.DropDownListFor(m => m.BrandID, (SelectList)ViewBag.BrandID, new { @class = "form-control", @placeholder = "e.g. garments" })
+            @Html.ValidationMessageFor(m => m.BrandID, null, new { @class = "text-danger" })
+        </div>
+    </div>
+            
+       
+            <div class="form-group">
+
+       <div class="col-lg-3">
+           </div>
+        <div class="col-lg-7">
+            <div class="checkbox"><label>@Html.CheckBoxFor(m=>m.Active) Active</label> </div>
+        </div>
+    </div>
+            
+                 
+            
+    
+            <div class="form-group">
+                <div class="col-lg-10 col-lg-offset-3">
+
+                    <button type="submit" class="btn btn-success blueButton">Next <i class="fa fa-forward"></i></button>
+                    <hr />
+                    <a href="@Url.Action("Index","Product")" class="btn btn-danger">Back <i class="fa fa-backward"></i> </a>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>
+<script type="text/javascript">
+    var url = '@Url.Action("GetSubCategories", "Product")'; // Don't hard code your url's!
+    var subcategories = $('#SubCategoryID'); // cache it
+    $("#CategoryID").change(function () {
+        //  OpenLoader();
+        var id = $(this).val(); // Use $(this) so you don't traverse the DOM again
+        $.getJSON(url, { id: id }, function (response) {
+            subcategories.empty(); // remove any existing options
+            $.each(response, function (index, item) {
+
+                subcategories.append($('<option></option>').text(item.Name).val(item.SCategoryID));
+            });
+            //    CloseLoader();
+        });
+    });
+
+    $(document).ready(function () {
+        // create Editor from textarea HTML element with default set of tools
+        $("#Description").kendoEditor({
+            resizable: {
+                content: true,
+                toolbar: true
+            }
+        });
+    });
+
+</script>

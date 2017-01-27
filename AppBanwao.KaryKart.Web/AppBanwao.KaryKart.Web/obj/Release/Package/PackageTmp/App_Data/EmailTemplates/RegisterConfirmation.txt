@@ -1,0 +1,22 @@
+﻿<html>
+<body style="color:grey; font-size:15px;">
+<font face="Helvetica, Arial, sans-serif">
+
+<div style="position:absolute; text-align:center;height:100px; width:600px; padding:30px;">
+<img src={0} />
+<p>Food-Groceries-Cakes</p>
+</div>
+
+<div style="background-color: #F5F6CE;width:600px; height:200px; padding:30px; margin-top:5px;">
+<div style='align:center'><img src={1} alt='Welcome Image' /> </div>
+<p>Dear {2},</p>
+
+<p>Thank you for registering with us, please type the following OTP in order to verify your email:</p>
+<p style='font-size:20px;color:#086A87'><span>{3}</span></p>
+<br/>
+<p>Please contact us on {4}, in case of any issue.</p>
+<p>Thank you</p>
+<p>KarryKart Team</p>
+</div>
+</body>
+</html>

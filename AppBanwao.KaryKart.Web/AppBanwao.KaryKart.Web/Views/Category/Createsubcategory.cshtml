@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "Createsubcategory";
+    Layout = "~/Views/Shared/_LayoutMaster.cshtml";
+}
+
+@model AppBanwao.KaryKart.Web.Models.SubcategoryModel
+<div class="row">
+
+    <div class="col-md-12">
+        <ul class="breadcrumb">
+            <li><a href="@Url.Action("Index","Home")">Home</a></li>
+            <li><a href="@Url.Action("Index","Offer")">Category</a></li>
+            <li class="active">Add sub category</li>
+        </ul>
+    </div>
+</div>
+<div class="row">
+    <h3><i class="fa fa-upload"></i> @Model.CategoryName - Add subcategory</h3>
+    <hr />
+    <div class="col-md-10">
+       
+        @using (Html.BeginForm("Createsubcategory", "Category", FormMethod.Post, new { @class = "form-horizontal"}))
+        {
+              @Html.AntiForgeryToken()
+            @Html.HiddenFor(m=>m.CategoryID)
+                <div class="form-group">
+
+                    @Html.LabelFor(m => m.Name, new { @class = "col-lg-3 control-label" })
+                    <div class="col-lg-7">
+                        @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @placeholder = "e.g. Photo cakes" })
+                        @Html.ValidationMessageFor(m => m.Name, null, new {@class="text-danger" })
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-3">
+
+                        <button type="submit" class="btn btn-success blueButton">Create <i class="fa fa-plus"></i></button>
+                        <hr />
+                        <a href="@Url.Action("Index","Category")" class="btn btn-danger">Back <i class="fa fa-backward"></i> </a>
+                    </div>
+                </div>
+            
+        }
+    </div>
+</div>

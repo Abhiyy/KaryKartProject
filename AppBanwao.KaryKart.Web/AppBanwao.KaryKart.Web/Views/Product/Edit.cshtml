@@ -1,0 +1,90 @@
+﻿@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutMaster.cshtml";
+}
+<script src="~/Scripts/App/ProductCtrl.js"></script>
+<script src="http://kendo.cdn.telerik.com/2017.1.118/js/kendo.all.min.js"></script>
+<div class="row">
+
+    <div class="col-md-12">
+        <ul class="breadcrumb">
+            <li><a href="@Url.Action("Index","Home")">Home</a></li>
+            <li><a href="@Url.Action("Index","Product")">Product</a></li>
+            <li class="active">Edit</li>
+        </ul>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-10" ng-controller="ProductController">
+        <h3>Product Details</h3>
+        <hr />
+
+        <form name="formBasicdetails" class="form-horizontal">
+            <div class="form-group">
+
+                <label class="col-lg-3 control-label" for="product.Name">Name</label>
+                <div class="col-lg-7">
+                    <input type="text" ng-disabled="!basicDetailsEditing" ng-model="product.Name" placeholder="e.g Arhar dal, chocolate etc." name="productName" class="form-control" />
+
+                </div>
+            </div>
+            
+            
+            <div class="form-group">
+
+                <label class="col-lg-3 control-label" for="product.Description">Description</label>
+                <div class="col-lg-7">
+                    <textarea ng-disabled="!basicDetailsEditing" ng-model="product.Description" placeholder="e.g Enter product details." name="productDescription" id="productDescription" class="form-control" ></textarea>
+
+                </div>
+            </div>
+            
+            <div class="form-group">
+
+                <label class="col-lg-3 control-label" for="product.CategoryID">Category</label>
+                <div class="col-lg-7">
+                    <select ng-disabled="!basicDetailsEditing" ng-model="product.CategoryID" class="form-control" name="productCategory" id="productCategory"></select>
+
+                </div>
+            </div>
+            
+            <div class="form-group">
+
+                <label class="col-lg-3 control-label" for="product.SubCategoryID">Sub-Category</label>
+                <div class="col-lg-7">
+                    <select ng-disabled="!basicDetailsEditing" ng-model="product.SubCategoryID" class="form-control" name="productSubCategory" id="productSubCategory"></select>
+
+                </div>
+            </div>
+            
+            <div class="form-group">
+
+                <label class="col-lg-3 control-label" for="product.BrandID">Brand</label>
+                <div class="col-lg-7">
+                    <select ng-disabled="!basicDetailsEditing" ng-model="product.BrandID" class="form-control" name="productBrand" id="productBrand"></select>
+
+                </div>
+            </div>
+            
+            <div class="form-group">
+
+                <label class="col-lg-3 control-label" for="product.Active">Active</label>
+                <div class="col-lg-7">
+                    <input type="checkbox" ng-disabled="!basicDetailsEditing" ng-model="product.Active" name="productActive" id="productActive" />
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-lg-7 col-lg-offset-3">
+                    <button ng-click="editBasicDetails()" ng-hide="basicDetailsEditing" class="btn btn-info">Edit Basic Details <i class="fa fa-edit"></i></button>
+                    <button ng-click="updateBasicDetails()" ng-show="basicDetailsEditing" class="btn btn-success">Update <i class="fa fa-check-circle"></i></button>
+                    <button ng-click="cancelBasicDetails()" ng-show="basicDetailsEditing" class="btn btn-danger">Cancel <i class="fa fa-close"></i></button>
+                    <hr />
+                    @*<a href="@Url.Action("Index","Category")" class="btn btn-danger">Back <i class="fa fa-backward"></i> </a>*@
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

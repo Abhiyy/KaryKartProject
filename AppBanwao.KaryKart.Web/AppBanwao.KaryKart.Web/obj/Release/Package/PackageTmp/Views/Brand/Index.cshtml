@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutMaster.cshtml";
+}
+@using GridMvc.Html
+@model List<AppBanwao.KarryKart.Model.Brand>
+
+<link href="~/Content/Gridmvc.css" rel="stylesheet" />
+<script src="~/Scripts/gridmvc.min.js"></script>
+<div class="row">
+
+    <div class="col-md-12">
+        <ul class="breadcrumb">
+            <li><a href="@Url.Action("Index","Home")">Home</a></li>
+            <li class="active">Brand Details</li>
+
+        </ul>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <h3>Brands list</h3>
+        <hr />
+        @Html.Grid(Model).Columns(columns =>
+{
+    columns.Add(data => data.BrandID).Titled("ID");
+    columns.Add(data => data.Name).Titled("Name");
+   
+    columns.Add()
+        .Titled("Actions")
+        .Encoded(false)
+        .Sanitized(false)
+        .SetWidth(30)
+        .RenderValueAs(o => @<a href="@Url.Action("Edit", "Brand", new { id = o.BrandID })" class="btn btn-info">Edit <i class="fa fa-edit"></i></a>);
+       
+        }).WithPaging(20)
+
+        <hr />
+
+        <a href="@Url.Action("Create","Brand")" class="btn btn-default">Create <i class="fa fa-plus"></i></a>
+        <hr />
+                    <a href="@Url.Action("Index","Home")" class="btn btn-danger">Back <i class="fa fa-backward"></i> </a>
+    </div>
+</div>

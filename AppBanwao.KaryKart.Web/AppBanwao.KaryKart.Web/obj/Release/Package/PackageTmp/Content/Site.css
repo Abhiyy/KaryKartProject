@@ -1,0 +1,131 @@
+﻿body {
+    //font-size: .85em;
+    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+    color: #232323;
+    background-color: #fff;
+}
+
+header, footer, nav, section {
+    display: block;
+}
+
+
+/* Styles for basic forms
+-----------------------------------------------------------*/
+fieldset {
+    border: 1px solid #ddd;
+    padding: 0 1.4em 1.4em 1.4em;
+    margin: 0 0 1.5em 0;
+}
+
+legend {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+textarea {
+    min-height: 75px;
+}
+
+.editor-label {
+    margin: 1em 0 0 0;
+}
+
+.editor-field {
+    margin: 0.5em 0 0 0;
+}
+
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error {
+    color: #f00;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    border: 1px solid #f00;
+    background-color: #fee;
+}
+
+.validation-summary-errors {
+    font-weight: bold;
+    color: #f00;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+.greyGradient
+{
+  background: #fff; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient( #fff,#f2f2f2); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient( #fff,#f2f2f2); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient( #fff,#f2f2f2); /* For Firefox 3.6 to 15 */
+  background: linear-gradient( #fff,#f2f2f2); /* Standard syntax */
+
+}
+.greyBackground {
+background-color:#f3f3f3;
+}
+.midFont {
+font-size:14px;
+}
+.greyborder {
+border: 1px solid #f3f3f3;
+}
+
+.darkPinkButton {
+background-color:#f61149;
+border: 1px solid #f61149;
+color:#fff
+}
+.darkPinkButton:hover {
+background-color:#d90835;
+border: 1px solid #d90835;
+color:#fff
+}
+.roundedBorder {
+border-radius:5px
+
+}
+
+.searchBox {
+height:39px !important;
+width:400px !important;
+}
+
+.SearchBoxDiv {
+padding-top:2%;
+}
+.CartBoxDiv {
+    text-align:right;
+padding-top:2.5%;
+}
+.topRow {
+padding-top:2px;
+padding-bottom:2px;
+text-align:center
+}
+.slotDropdown {
+border-radius:5px;
+height:30px
+
+}
+
+.errorMessage {
+color:#f00 !important;
+}
+.successMessage {
+color:#13762d !important;
+}
+.carretButtonPadding {
+/*padding-bottom:9px !important;*/
+}
+.tabActive {
+    background-color: #008cba;
+}

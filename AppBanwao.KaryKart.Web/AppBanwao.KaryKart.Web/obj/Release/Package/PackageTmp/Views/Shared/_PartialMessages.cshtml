@@ -1,0 +1,27 @@
+﻿@{
+    var alerts = TempData.ContainsKey(AppBanwao.KaryKart.Web.Helpers.MessageHelper.TempDataKey)
+                ? (List<AppBanwao.KaryKart.Web.Helpers.MessageHelper>)TempData[AppBanwao.KaryKart.Web.Helpers.MessageHelper.TempDataKey]
+                : new List<AppBanwao.KaryKart.Web.Helpers.MessageHelper>();
+
+   
+
+    foreach (var alert in alerts)
+    {
+        var dismissableClass = alert.Dismissable ? "alert-dismissable" : null;
+        <div class="alert alert-@alert.AlertStyle @dismissableClass">
+            @if (alert.Dismissable)
+            {
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            }
+            @Html.Raw(alert.Message)
+        </div>
+    }
+
+    if (alerts.Any())
+    {
+        <hr />
+    }
+}
+
+
+

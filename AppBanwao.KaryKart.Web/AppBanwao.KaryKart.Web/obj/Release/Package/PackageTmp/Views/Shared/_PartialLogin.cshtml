@@ -1,0 +1,103 @@
+﻿<script src="~/Scripts/App/RegisterCtrl.js"></script>
+<script src="~/Scripts/App/LoginCtrl.js"></script>
+<!-- Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="loginModalLabel">Login or Register</h4>
+      </div>
+      <div class="modal-body">
+      <div>
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#Login" aria-controls="Login" role="tab" data-toggle="tab">Login</a></li>
+    <li role="presentation"><a href="#Register" aria-controls="Register" role="tab" data-toggle="tab">Register</a></li>
+  
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content" >
+      <div role="tabpanel" class="tab-pane active" id="Login" ng-controller="LoginController">
+          <form name="loginForm" novalidate>
+              <div class="form-group">
+                  <label for="user.UserID">Email Address</label>
+                  <input type="email" class="form-control" ng-model="user.UserID" name="loginUserID" ng-pattern="emailExpression" placeholder="Your email">
+                  <p class="help-block errorMessage" ng-show="loginForm.loginUserID.$error.pattern">
+                      Please provide valid User ID.
+                  </p>
+              </div>
+              <div class="form-group">
+                  <label for="user.Pwd">Password</label>
+                  <input type="password" ng-model="user.loginPwd" class="form-control" name="loginPwd" placeholder="Password" ng-required="true">
+                  <p class="help-block errorMessage" ng-show="loginForm.loginPwd.$invalid && !loginForm.loginPwd.$pristine">
+                      Password is required.
+                  </p>
+              </div>
+              <div class="form-group" ng-show="user.showmessage">
+                  <label ng-model="errortype" class="text-{{errortype}}"> <span ng-bind-html="user.message"></span> </label>
+              </div>
+              <button type="submit" class="btn btn-primary" ng-click="login()"><i class="fa fa-user"></i> Login</button>
+              <a href="@Url.Action("ForgotPassword","Account")" class="btn btn-default"><i class="fa fa-key"></i> Forgot Password</a>
+          </form>
+          New user?<a href="#" id="lnkRegister" onclick="SwitchToTab('Register')">Click here </a>to regiser
+      </div>
+    <div role="tabpanel" class="tab-pane" id="Register" ng-controller ="RegisterController">
+
+        <form name="registerForm" novalidate>
+            <div class="form-group">
+                <label for="user.UserIdentifier">Email address</label>
+                <input type="text" class="form-control" name="UserIdentifier" ng-model="user.UserIdentifier" ng-pattern="emailExpression" placeholder="Email">
+                <p class="help-block errorMessage" ng-show="registerForm.UserIdentifier.$error.pattern">
+                    Please provide valid email address.
+                </p>
+             </div>
+            <div ng-hide="hidePwdSection">
+                <div class="form-group">
+                    <label for="user.pwd">Password</label>
+                    <input type="password" class="form-control" name="userPwd" ng-pattern="pwdExpression" ng-model="user.pwd" placeholder="Password">
+                    <p class="help-block errorMessage" ng-show="registerForm.userPwd.$error.pattern">
+                        Your password should more of 8 characters, and it should have a combination of mixed case and atleast a number in it.
+                    </p>
+                </div>
+                <div class="form-group">
+                    <label for="user.pwd">Confirm Password</label>
+                    <input type="password" class="form-control" ng-keyup="compare(user.cnfpwd)" name="cnfpwd" ng-pattern="pwdExpression" ng-model="user.cnfpwd" placeholder="Confirm Password">
+                    <label ng-class="{true:'successMessage',false:'errorMessage'}[isconfirm]" ng-show="isconfirm || registerForm.cnfpwd.$dirty ">
+                        Password {{isconfirm==true?'':'not'}} match
+                    </label>
+                </div>
+            </div>
+            <div ng-show="hidePwdSection">
+                <div class="form-group">
+                    <label for="user.otp">OTP</label>
+                    <input type="password" class="form-control" id="txtOtp" ng-model="user.otp" placeholder="Please provide OTP">
+                </div>
+            </div>
+            <div class="form-group ng-hide" ng-show="user.showmessage">
+                <label ng-model="errortype" class="text-{{errortype}}"> <span ng-bind-html="user.message"></span> </label>
+            </div>
+
+
+            <button type="submit" class="btn btn-primary" ng-hide="hidePwdSection" ng-click="register()">
+                <i class="fa fa-user-plus"></i> Register
+            </button>
+            <button type="button" class="btn btn-primary ng-hide" ng-show="hidePwdSection" ng-click="verifyotp()">
+                <i class="fa fa-check-circle"></i> Verify OTP
+            </button>
+
+            <button type="button" class="btn btn-default" ng-click="switchtologin()"><i class="fa fa-angle-left"></i> Back to Login</button>
+
+        </form>
+
+    </div>
+  </div>
+
+</div>
+      </div>
+      
+    </div>
+  </div>
+</div>
