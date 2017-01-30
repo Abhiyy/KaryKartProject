@@ -4,6 +4,7 @@ using AppBanwao.KaryKart.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -164,12 +165,39 @@ namespace AppBanwao.KaryKart.Web.Controllers
         }
 
         [HttpGet]
-        public JsonResult GetSubCategories(int id) // its a GET, not a POST
+        public JsonResult GetCategories()
         {
             _dbContext = new karrykartEntities();
-            var subcategories = _dbContext.Subcategories.Where(x => x.CategoryID == id).Select(x => new { x.SCategoryID,x.Name }).ToList();
+            var categories = _dbContext.Categories.Select(x => new { x.CategoryID, x.Name }).ToList();
             _dbContext = null;
-            return Json(subcategories, JsonRequestBehavior.AllowGet);
+            return Json(categories, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public JsonResult GetBrands()
+        {
+            _dbContext = new karrykartEntities();
+            var brands = _dbContext.Brands.Select(x => new { x.BrandID, x.Name }).ToList();
+            _dbContext = null;
+            return Json(brands, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public JsonResult GetSubCategories(int id = -1) // its a GET, not a POST
+        {
+            _dbContext = new karrykartEntities();
+            if (id != -1)
+            {
+                var subcategories = _dbContext.Subcategories.Where(x => x.CategoryID == id).Select(x => new { x.SCategoryID, x.Name }).ToList();
+                _dbContext = null;
+                return Json(subcategories, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                var subcategories = _dbContext.Subcategories.Select(x => new { x.SCategoryID, x.Name }).ToList();
+                _dbContext = null;
+                return Json(subcategories, JsonRequestBehavior.AllowGet);
+            }
         }
 
         [HttpGet]
@@ -183,6 +211,33 @@ namespace AppBanwao.KaryKart.Web.Controllers
         
         public ActionResult Edit(Guid id)
         {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult EditBasicProductDetails(ProductDetailsModel model)
+        {
+            if (model.ProductID != Guid.Empty)
+            { 
+                _dbContext = new karrykartEntities();
+                var product = _dbContext.Products.Find(model.ProductID);
+                if (product != null)
+                {
+                    product.Active = model.Active;
+                    product.BrandID = model.BrandID;
+                    product.CategoryID = model.CategoryID;
+                    product.SubCategoryID = model.SubCategoryID;
+                    product.Description = model.Description;
+                    product.Name = model.Name;
+                    product.UpdatedBy = User.Identity.Name;
+                    product.UpdatedOn = DateTime.Now;
+                    _dbContext.Entry(product).State = EntityState.Modified;
+                    _dbContext.SaveChanges();
+                    _logger.WriteLog(CommonHelper.MessageType.Success, "Basic product details updated successfully with Name=" + model.Name, "EditBasicProductDetails", "ProductController", User.Identity.Name);
+
+                    return Json(new { messagetype = ApplicationMessages.Product.SUCCESS, message = "Basic product details updated successfully." });
+                }
+            }
             return View();
         }
         

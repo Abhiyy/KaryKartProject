@@ -47,6 +47,13 @@ namespace AppBanwao.KaryKart.Web.Helpers
             public const string USERNOTEXISTS = "usernotexists";
         }
 
+        public class Product
+        {
+            public const string SUCCESS = "success";
+            public const string ERROR = "error";
+           
+        }
+
     }
 
     

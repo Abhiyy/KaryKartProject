@@ -28,3 +28,12 @@ D:\My work\DA work\Repo\kk\AppBanwao.KaryKart.Web\AppBanwao.KarryKart.Model\bin\
 D:\My work\DA work\Repo\kk\AppBanwao.KaryKart.Web\AppBanwao.KarryKart.Model\obj\Debug\AppBanwao.KarryKart.Model.csprojResolveAssemblyReference.cache
 D:\My work\DA work\Repo\kk\AppBanwao.KaryKart.Web\AppBanwao.KarryKart.Model\obj\Debug\AppBanwao.KarryKart.Model.dll
 D:\My work\DA work\Repo\kk\AppBanwao.KaryKart.Web\AppBanwao.KarryKart.Model\obj\Debug\AppBanwao.KarryKart.Model.pdb
+D:\My work\DA work\Repo\KaryKartProject\AppBanwao.KaryKart.Web\AppBanwao.KarryKart.Model\bin\Debug\AppBanwao.KarryKart.Model.dll.config
+D:\My work\DA work\Repo\KaryKartProject\AppBanwao.KaryKart.Web\AppBanwao.KarryKart.Model\bin\Debug\AppBanwao.KarryKart.Model.dll
+D:\My work\DA work\Repo\KaryKartProject\AppBanwao.KaryKart.Web\AppBanwao.KarryKart.Model\bin\Debug\AppBanwao.KarryKart.Model.pdb
+D:\My work\DA work\Repo\KaryKartProject\AppBanwao.KaryKart.Web\AppBanwao.KarryKart.Model\bin\Debug\EntityFramework.dll
+D:\My work\DA work\Repo\KaryKartProject\AppBanwao.KaryKart.Web\AppBanwao.KarryKart.Model\bin\Debug\EntityFramework.SqlServer.dll
+D:\My work\DA work\Repo\KaryKartProject\AppBanwao.KaryKart.Web\AppBanwao.KarryKart.Model\bin\Debug\EntityFramework.xml
+D:\My work\DA work\Repo\KaryKartProject\AppBanwao.KaryKart.Web\AppBanwao.KarryKart.Model\bin\Debug\EntityFramework.SqlServer.xml
+D:\My work\DA work\Repo\KaryKartProject\AppBanwao.KaryKart.Web\AppBanwao.KarryKart.Model\obj\Debug\AppBanwao.KarryKart.Model.dll
+D:\My work\DA work\Repo\KaryKartProject\AppBanwao.KaryKart.Web\AppBanwao.KarryKart.Model\obj\Debug\AppBanwao.KarryKart.Model.pdb
