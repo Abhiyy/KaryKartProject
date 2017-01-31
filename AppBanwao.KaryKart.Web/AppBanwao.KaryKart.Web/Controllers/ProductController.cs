@@ -45,7 +45,8 @@ namespace AppBanwao.KaryKart.Web.Controllers
             return View();
         }
 
-        public ActionResult Create() {
+        public ActionResult Create()
+        {
             CreateViewBagForProduct();
             return View();
         }
@@ -78,7 +79,7 @@ namespace AppBanwao.KaryKart.Web.Controllers
                     _logger.WriteLog(CommonHelper.MessageType.Success, "Product created successfully with name=" + product.ProductID, "Create", "ProductController", User.Identity.Name);
                     return RedirectToAction("AddImageFeatureDetails", "Product", new { id = product.ProductID });
                 }
-            
+
             }
             CreateViewBagForProduct();
             return View();
@@ -90,7 +91,7 @@ namespace AppBanwao.KaryKart.Web.Controllers
             {
                 var product = _dbContext.Products.Find(id);
                 return View(new ProductModel() { ProductID = product.ProductID, Name = product.Name });
-            
+
             }
             return View();
         }
@@ -99,34 +100,34 @@ namespace AppBanwao.KaryKart.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult AddImageFeatureDetails(ProductModel model)
         {
-            
+
             using (_dbContext = new karrykartEntities())
             {
-                    if (!(String.IsNullOrEmpty(model.Features)))
+                if (!(String.IsNullOrEmpty(model.Features)))
+                {
+                    foreach (var featureText in model.Features.Split(';'))
                     {
-                        foreach (var featureText in model.Features.Split(';'))
-                        {
-                            _dbContext.ProductFeatures.Add(new ProductFeature() { Feature = featureText, ProductID = model.ProductID });
-                        }
+                        _dbContext.ProductFeatures.Add(new ProductFeature() { Feature = featureText, ProductID = model.ProductID });
                     }
+                }
 
-                    var lstImages = UploadImage(model);
+                var lstImages = UploadImage(model);
 
-                    foreach (var image in lstImages)
+                foreach (var image in lstImages)
+                {
+                    if (!String.IsNullOrEmpty(image))
                     {
-                        if (!String.IsNullOrEmpty(image))
-                        {
-                            _dbContext.ProductImages.Add(new ProductImage() {ImageID=Guid.NewGuid(), ImageLink = image, ProductID = model.ProductID });
-                            _dbContext.SaveChanges();
-                        }
+                        _dbContext.ProductImages.Add(new ProductImage() { ImageID = Guid.NewGuid(), ImageLink = image, ProductID = model.ProductID });
+                        _dbContext.SaveChanges();
                     }
-                    _logger.WriteLog(CommonHelper.MessageType.Success, "Product imgaes and features added successfully with name=" + model.ProductID, "Create", "ProductController", User.Identity.Name);
-                    return RedirectToAction("AddStockPrice", "Product", new { id = model.ProductID });
+                }
+                _logger.WriteLog(CommonHelper.MessageType.Success, "Product imgaes and features added successfully with name=" + model.ProductID, "Create", "ProductController", User.Identity.Name);
+                return RedirectToAction("AddStockPrice", "Product", new { id = model.ProductID });
             }
 
             return View(model);
         }
-        
+
         public ActionResult AddStockPrice(Guid id)
         {
             using (_dbContext = new karrykartEntities())
@@ -208,7 +209,7 @@ namespace AppBanwao.KaryKart.Web.Controllers
             _dbContext = null;
             return Json(sizes, JsonRequestBehavior.AllowGet);
         }
-        
+
         public ActionResult Edit(Guid id)
         {
             return View();
@@ -218,7 +219,7 @@ namespace AppBanwao.KaryKart.Web.Controllers
         public ActionResult EditBasicProductDetails(ProductDetailsModel model)
         {
             if (model.ProductID != Guid.Empty)
-            { 
+            {
                 _dbContext = new karrykartEntities();
                 var product = _dbContext.Products.Find(model.ProductID);
                 if (product != null)
@@ -240,7 +241,44 @@ namespace AppBanwao.KaryKart.Web.Controllers
             }
             return View();
         }
-        
+
+        [HttpPost]
+        public ActionResult RemoveProductFeature(Guid ProductID, int FeatureID)
+        {
+
+            _dbContext = new karrykartEntities();
+
+            var feature = _dbContext.ProductFeatures.Where(x => x.FeatureID == FeatureID && x.ProductID == ProductID).FirstOrDefault();
+
+            if (feature != null)
+            {
+                _dbContext.Entry(feature).State = EntityState.Deleted;
+                _dbContext.SaveChanges();
+                _logger.WriteLog(CommonHelper.MessageType.Success, "Product feature deleted successfully with id=" + FeatureID, "RemoveProductFeature", "ProductController", User.Identity.Name);
+                _dbContext = null;
+                return Json(new { messagetype = ApplicationMessages.Product.SUCCESS, message = "Product feature removed successfully." });
+            }
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult EditProductFeature(Guid ProductID, int FeatureID, string featureText)
+        {
+            _dbContext = new karrykartEntities();
+
+            var feature = _dbContext.ProductFeatures.Where(f => f.FeatureID == FeatureID && f.ProductID == ProductID).FirstOrDefault();
+            if (feature != null)
+            {
+                feature.Feature = featureText;
+                _dbContext.Entry(feature).State = EntityState.Modified;
+                _dbContext.SaveChanges();
+                _dbContext = null;
+                _logger.WriteLog(CommonHelper.MessageType.Success, "Product feature edited successfully with id=" + FeatureID, "EditProductFeature", "ProductController", User.Identity.Name);
+                return Json(new { messagetype = ApplicationMessages.Product.SUCCESS, message = "Product feature added successfully." });
+            }
+            return View();
+        }
         void CreateViewBagForProduct()
         {
             _dbContext = new karrykartEntities();
@@ -267,14 +305,14 @@ namespace AppBanwao.KaryKart.Web.Controllers
         {
             List<string> lstImageLink = new List<string>();
             if (model.Image1 != null)
-                lstImageLink.Add( CommonHelper.UploadFile(model.Image1, _productImages));
+                lstImageLink.Add(CommonHelper.UploadFile(model.Image1, _productImages));
 
             if (model.Image2 != null)
                 lstImageLink.Add(CommonHelper.UploadFile(model.Image2, _productImages));
 
             if (model.Image3 != null)
                 lstImageLink.Add(CommonHelper.UploadFile(model.Image3, _productImages));
-            
+
             return lstImageLink;
         }
     }

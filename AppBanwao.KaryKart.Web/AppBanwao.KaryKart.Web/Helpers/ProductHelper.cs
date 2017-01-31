@@ -23,7 +23,10 @@ namespace AppBanwao.KaryKart.Web.Helpers
         public IList<ProductDetailsModel> GetAllProducts()
         {
             var productList= _apiHelper.DeserializeToList<ProductDetailsModel>( _apiHelper.SendRequest("Product"));
-          
+
+            if (productList == null)
+                productList = new List<ProductDetailsModel>();
+
             return productList;
         }
 

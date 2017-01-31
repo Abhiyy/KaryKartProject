@@ -1,5 +1,5 @@
 ﻿app.controller("ProductController", ['$scope', '$http', '$window', '$location', function ($scope, $http, $window, $location) {
-    var apiURL = 'http://testapi.karrykart.com/api/';
+    var apiURL = 'http://localhost:13518/api/';
 
     var product;
     $scope.basicDetailsEditing = false;
@@ -13,6 +13,7 @@
         $scope.product = data;
     });
 
+    $scope.selected = {};
     $scope.categories;
     $scope.subcategories;
     $scope.brands;
@@ -40,9 +41,10 @@
         url: apiURL
     }).success(function (data, status, header, config) {
         $scope.product = data;
+    
     });
 
-      
+
     $scope.editBasicDetails = function () {
         $scope.basicDetailsEditing = true;
     }
@@ -57,7 +59,7 @@
             "CategoryID": $scope.product.CategoryID,
             "SubCategoryID": $scope.product.SubCategoryID,
             "BrandID": $scope.product.BrandID,
-            "Active":$scope.product.Active
+            "Active": $scope.product.Active
         };
 
         $http.post("/Product/EditBasicProductDetails", { model: basicproductDetails }).success(function (responseData) {
@@ -70,8 +72,48 @@
         }).error(function (responseData) {
             console.log("Error !" + responseData);
         });
-    }
+    };
 
+
+    $scope.deleteProductFeature = function (id) {
+        $http.post("/Product/RemoveProductFeature", { ProductID: $scope.product.ProductID, FeatureID: id }).success(function (responseData) {
+            if (responseData.messagetype = "success") {
+                alert(responseData.message);
+            } else {
+                alert(responseData.message);
+            }
+        }).error(function (responseData) {
+            console.log("Error !" + responseData);
+        });
+    };
+
+    $scope.getTemplate = function (feature) {
+        if (feature.FeatureID === $scope.selected.FeatureID) return 'edit';
+        else return 'display';
+    };
+
+    $scope.editFeature = function (feature) {
+        $scope.selected = angular.copy(feature);
+    };
+
+    $scope.reset = function () {
+        $scope.selected = {};
+    };
+
+    $scope.saveEditedFeature = function (model) {
+        $http.post("/Product/EditProductFeature", { ProductID: $scope.product.ProductID, FeatureID: model.FeatureID, featureText:model.Feature }).success(function (responseData) {
+            if (responseData.messagetype = "success") {
+                alert(responseData.message);
+                $scope.reset();
+            } else {
+                alert(responseData.message);
+            }
+        }).error(function (responseData) {
+            console.log("Error !" + responseData);
+        });
+
+    };
+    
 }]);
 
 //app.service('ProductService', ['$http', function ($http, $scope) {

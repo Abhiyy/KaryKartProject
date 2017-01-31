@@ -101,64 +101,50 @@
                 </div>
             </div>
         </form>
-         <hr />
 
+       <hr/>
+        <h3>Product Features and Images</h3>
+         <hr />
+        
         <form name="formproductFeatureImages" class="form-horizontal">
             <div class="form-group">
 
                 <label class="col-lg-3 control-label" for="product.Features">Features</label>
                 <div class="col-lg-7">
-        
+                     
+                    <table class="table table-striped table-hover">
+                        <tr><th>#</th> <th>Feature Description</th><td>Actions</td></tr>
+                        <tr ng-repeat="x in product.Features" ng-include="getTemplate(x)">
+                           @* <td>{{ x.FeatureID }}</td>
+                            <td>
+                                    {{ x.Feature }}
+                             </td>
+                            <td>
+                            <button class="btn btn-info btn-xs" id="btnEditFeature" title="Edit Feature" ng-click="editProductFeature('{{ x.FeatureID }}')"> <i class="fa fa-pencil"></i> </button> <button class="btn btn-danger btn-xs" title="Remove Feature" id="btnDelete" ng-click="deleteProductFeature( x.FeatureID )"> <i class="fa fa-remove"></i> </button></td>*@
+                        </tr>
+                    </table>
+                    <script type="text/ng-template" id="display">
+                            <td>{{ x.FeatureID }}</td>
+                            <td>{{ x.Feature }}
+                             </td>
+                            <td>
+                            <button class="btn btn-info btn-xs" id="btnEditFeature" title="Edit Feature" ng-click="editFeature(x)"> <i class="fa fa-pencil"></i> </button> <button class="btn btn-danger btn-xs" title="Remove Feature" id="btnDelete" ng-click="deleteProductFeature( x.FeatureID )"> <i class="fa fa-remove"></i> </button></td>
+    </script>
+                    <script type="text/ng-template" id="edit">
+         <td><span ng-model="selected.FeatureID">{{ x.FeatureID }}</span></td>
+        <td><input type="text" ng-model="selected.Feature" /></td>
+        <td>
+            <button ng-click="saveEditedFeature(selected)">Save</button>
+            <button ng-click="reset()">Cancel</button>
+        </td>
+    </script>
                     @*<input type="text" ng-disabled="!basicDetailsEditing" ng-model="product.Name" placeholder="e.g Arhar dal, chocolate etc." name="productName" class="form-control" />*@
 
                 </div>
             </div>
             
             
-            <div class="form-group">
-
-                <label class="col-lg-3 control-label" for="product.Description">Description</label>
-                <div class="col-lg-7">
-                    <textarea ng-disabled="!basicDetailsEditing" ng-model="product.Description" placeholder="e.g Enter product details." name="productDescription" id="productDescription" class="form-control" ></textarea>
-
-                </div>
-            </div>
             
-            <div class="form-group">
-
-                <label class="col-lg-3 control-label" for="product.CategoryID">Category</label>
-                <div class="col-lg-7">
-                 <select ng-disabled="!basicDetailsEditing" ng-options="c.CategoryID as c.Name for c in categories" ng-init="product.CategoryID" ng-model="product.CategoryID" class="form-control" name="productCategory" id="productCategory"></select>
-                </div>
-            </div>
-            
-            <div class="form-group">
-
-                <label class="col-lg-3 control-label" for="product.SubCategoryID">Sub-Category</label>
-                <div class="col-lg-7">
-                    
-                    <select ng-disabled="!basicDetailsEditing" ng-options="sc.SCategoryID as sc.Name for sc in subcategories" ng-model="product.SubCategoryID" class="form-control" name="productSubCategory" id="productSubCategory"></select>
-
-                </div>
-            </div>
-            
-            <div class="form-group">
-
-                <label class="col-lg-3 control-label" for="product.BrandID">Brand</label>
-                <div class="col-lg-7">
-                    <select ng-disabled="!basicDetailsEditing" ng-options="b.BrandID as b.Name for b in brands" ng-model="product.BrandID" class="form-control" name="productBrand" id="productBrand"></select>
-
-                </div>
-            </div>
-            
-            <div class="form-group">
-
-                <label class="col-lg-3 control-label" for="product.Active">Active</label>
-                <div class="col-lg-7">
-                    <input type="checkbox" ng-disabled="!basicDetailsEditing" ng-model="product.Active" name="productActive" id="productActive" />
-
-                </div>
-            </div>
 
             <div class="form-group">
                 <div class="col-lg-7 col-lg-offset-3">
