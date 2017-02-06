@@ -33,7 +33,7 @@
         .Encoded(false)
         .Sanitized(false)
         .SetWidth(30)
-        .RenderValueAs(o => @<a href="@Url.Action("Edit", "Category", new { id = o.CategoryID })" class="btn btn-info">Edit <i class="fa fa-edit"></i></a>);
+        .RenderValueAs(o => @<a href="@Url.Action("EditSubCategory", "Category", new { id = o.SCategoryID })" class="btn btn-info">Edit <i class="fa fa-edit"></i></a>);
       
 }).WithPaging(20)
 

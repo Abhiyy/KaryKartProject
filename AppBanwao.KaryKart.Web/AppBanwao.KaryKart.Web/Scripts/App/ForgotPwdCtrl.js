@@ -58,6 +58,7 @@
                 $scope.showPwdPanel = true;
                 $scope.errortype = 'info';
                 $scope.message = data.message;
+                $scope.showOtpPanel = false;
             }
 
             if (data.messagetype == 'error') {

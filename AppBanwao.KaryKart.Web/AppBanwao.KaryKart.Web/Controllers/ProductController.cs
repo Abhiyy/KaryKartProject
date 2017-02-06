@@ -150,10 +150,10 @@ namespace AppBanwao.KaryKart.Web.Controllers
                     var productSizeMapping = new ProductSizeMapping() { ProductID = model.ProductID, SizeID = model.SizeID, UnitID = model.UnitID, Stock = model.Stock };
                     _dbContext.ProductSizeMappings.Add(productSizeMapping);
 
-                    var productprice = new ProductPrice() { CurrencyID = model.CurrencyID, ProductID = model.ProductID, SizeID = model.SizeID, Price = Convert.ToDecimal(model.Price) };
+                    var productprice = new ProductPrice() {UnitID=model.UnitID, CurrencyID = model.CurrencyID, ProductID = model.ProductID, SizeID = model.SizeID, Price = Convert.ToDecimal(model.Price) };
                     _dbContext.ProductPrices.Add(productprice);
 
-                    var productShipping = new ProductShipping() { ProductID = model.ProductID, SizeID = model.SizeID, Cost = Convert.ToDecimal(model.ShippingCost) };
+                    var productShipping = new ProductShipping() { UnitID = model.UnitID, ProductID = model.ProductID, SizeID = model.SizeID, Cost = Convert.ToDecimal(model.ShippingCost) };
                     _dbContext.ProductShippings.Add(productShipping);
                     _dbContext.SaveChanges();
                     _logger.WriteLog(CommonHelper.MessageType.Success, "Product Stock and price added successfully with ID=" + model.Name, "AddStockPrice", "ProductController", User.Identity.Name);
@@ -202,12 +202,41 @@ namespace AppBanwao.KaryKart.Web.Controllers
         }
 
         [HttpGet]
-        public JsonResult GetSizes(int id) // its a GET, not a POST
+        public JsonResult GetSizes(int id=-1) // its a GET, not a POST
         {
+            if( id!=-1)
+            {
             _dbContext = new karrykartEntities();
             var sizes = _dbContext.Sizes.Where(x => x.SizeTypeID == id).Select(x => new { x.SizeID, x.Name }).ToList();
             _dbContext = null;
             return Json(sizes, JsonRequestBehavior.AllowGet);
+            }else{
+            _dbContext = new karrykartEntities();
+            var sizes = _dbContext.Sizes.Select(x => new { x.SizeID, x.Name }).ToList();
+            _dbContext = null;
+            return Json(sizes, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        [HttpGet]
+        public JsonResult GetSizeTypes()
+        {
+            _dbContext = new karrykartEntities();
+
+            var sizetypes = _dbContext.SizeTypes.Select(x => new { x.SizeTypeID, x.Name }).ToList();
+            _dbContext = null;
+
+            return Json(sizetypes, JsonRequestBehavior.AllowGet);
+        }
+        
+        [HttpGet]
+        public JsonResult GetUnits()
+        {
+            _dbContext = new karrykartEntities();
+            var units = _dbContext.Units.Select(x => new { x.UnitID, x.Name }).ToList();
+            _dbContext = null;
+
+            return Json(units, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Edit(Guid id)
@@ -279,6 +308,149 @@ namespace AppBanwao.KaryKart.Web.Controllers
             }
             return View();
         }
+
+        [HttpPost]
+        public ActionResult AddProductFeature(Guid ProductID, int FeatureID, string featureText)
+        {
+            if (FeatureID == -1)
+            {
+                _dbContext = new karrykartEntities();
+                var feature = new ProductFeature() { ProductID = ProductID, Feature = featureText };
+                _dbContext.ProductFeatures.Add(feature);
+                _dbContext.SaveChanges();
+                _dbContext = null;
+                _logger.WriteLog(CommonHelper.MessageType.Success, "Product feature added successfully with text=" + featureText, "AddProductFeature", "ProductController", User.Identity.Name);
+
+                return Json(new { messagetype = ApplicationMessages.Product.SUCCESS, message = "New product feature details added successfully.", id = feature.FeatureID });
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddNewProductImage(Guid ProductID, HttpPostedFileBase file)
+        {
+            if (file != null)
+            {
+                _dbContext = new karrykartEntities();
+                var productImage = new ProductImage() {ImageID=Guid.NewGuid(), ImageLink = CommonHelper.UploadFile(file, _productImages), ProductID = ProductID };
+                _dbContext.ProductImages.Add(productImage);
+                _dbContext.SaveChanges();
+                _logger.WriteLog(CommonHelper.MessageType.Success, "Product image added successfully for product ID=" + ProductID +", ImageID="+productImage.ImageID, "AddNewProductImage", "ProductController", User.Identity.Name);
+                return Json(new { messagetype = ApplicationMessages.Product.SUCCESS, message = "New product image details added successfully.", id = productImage.ImageID, ImageLink = productImage.ImageLink });
+            }
+          
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult RemoveProductImage(Guid ProductID, Guid ImageID)
+        {
+            if (ProductID != null)
+            {
+                _dbContext = new karrykartEntities();
+                var productImage = _dbContext.ProductImages.Where(x => x.ProductID == ProductID && x.ImageID == ImageID).FirstOrDefault();
+                _dbContext.Entry(productImage).State = EntityState.Deleted;
+                _dbContext.SaveChanges();
+                _dbContext = null;
+                _logger.WriteLog(CommonHelper.MessageType.Success, "Product image deleted successfully.", "RemoveProductImage", "ProductController", User.Identity.Name);
+
+                return Json(new { messagetype = ApplicationMessages.Product.SUCCESS, message = "New product feature details added successfully." });
+            
+            }
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddProductStockPrice(Guid ProductID, int SizeID, string SizeName, int UnitID, int SizeTypeID, int Stock, decimal Cost, decimal Price)
+        {
+            if (ProductID != null)
+            { 
+                _dbContext = new karrykartEntities();
+               
+                var productSizeMapping = _dbContext.ProductSizeMappings.Where(x => x.ProductID == ProductID && x.SizeID==SizeID &&x.UnitID==UnitID).FirstOrDefault();
+                if (productSizeMapping == null)
+                {
+                    productSizeMapping = new ProductSizeMapping();
+                    productSizeMapping.ProductID = ProductID;
+                    productSizeMapping.SizeID = SizeID;
+                    productSizeMapping.Stock = Stock;
+                    productSizeMapping.UnitID = UnitID;
+                    _dbContext.Entry(productSizeMapping).State = EntityState.Added;
+                }
+                else {
+                    return Json(new { messagetype = ApplicationMessages.Product.ERROR, message = "Product and size mapping details already exists." });
+                }
+
+                var price = _dbContext.ProductPrices.Where(x => x.ProductID == ProductID && x.SizeID==SizeID && x.UnitID==UnitID).FirstOrDefault();
+                if (price == null)
+                {
+                    price = new ProductPrice();
+                    price.Price = Price;
+                    price.SizeID = SizeID;
+                    price.ProductID = ProductID;
+                    price.CurrencyID = 1;
+                    price.UnitID = UnitID;
+                    _dbContext.Entry(price).State = EntityState.Added;
+
+                }
+                else {
+                    return Json(new { messagetype = ApplicationMessages.Product.ERROR, message = "Product's size and Price mapping details already exists." });
+                }
+                var shipping = _dbContext.ProductShippings.Where(x => x.SizeID == SizeID && x.ProductID == ProductID && x.UnitID==UnitID).FirstOrDefault();
+                if (shipping == null)
+                {
+                    shipping = new ProductShipping();
+                    shipping.Cost = Cost;
+                    shipping.SizeID = SizeID;
+                    shipping.ProductID = ProductID;
+                    shipping.UnitID = UnitID;
+                    _dbContext.Entry(shipping).State = EntityState.Added;
+
+                }
+                else {
+                    return Json(new { messagetype = ApplicationMessages.Product.ERROR, message = "Product size and shipping cost mapping details already exists." });
+                }
+
+                _dbContext.SaveChanges();
+
+                _logger.WriteLog(CommonHelper.MessageType.Success, "Product stock, price and size mapping details has been added successfully.", "EditProductStockPrice", "ProductController", User.Identity.Name);
+
+                return Json(new { messagetype = ApplicationMessages.Product.SUCCESS, message = "Product stock, price and size mapping details has been added successfully." });
+            }
+            return View();
+        }
+        
+        [HttpPost]
+        public ActionResult DeleteProductSizeMapping(Guid ProductID, int SizeID)
+        {
+
+            if (ProductID != null)
+            {
+                _dbContext = new karrykartEntities();
+                var productSizeMapping = _dbContext.ProductSizeMappings.Where(x => x.ProductID == ProductID && x.SizeID == SizeID).FirstOrDefault();
+                _dbContext.Entry(productSizeMapping).State = EntityState.Deleted;
+
+                var productPrice = _dbContext.ProductPrices.Where(x => x.ProductID == ProductID && x.SizeID == SizeID).FirstOrDefault();
+                _dbContext.Entry(productPrice).State = EntityState.Deleted;
+
+                var productSC = _dbContext.ProductShippings.Where(x => x.ProductID == ProductID && x.SizeID==SizeID).FirstOrDefault();
+                _dbContext.Entry(productSC).State = EntityState.Deleted;
+
+                _dbContext.SaveChanges();
+
+                _dbContext = null;
+
+                _logger.WriteLog(CommonHelper.MessageType.Success, "Product stock, price and size mapping details has been deleted successfully.", "DeleteProductSizeMapping", "ProductController", User.Identity.Name);
+
+                return Json(new { messagetype = ApplicationMessages.Product.SUCCESS, message = "Product stock, price and size mapping details has been deleted successfully." });
+            }
+
+            return View();
+        }
+
+        
+
         void CreateViewBagForProduct()
         {
             _dbContext = new karrykartEntities();

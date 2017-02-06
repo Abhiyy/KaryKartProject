@@ -132,5 +132,37 @@ namespace AppBanwao.KaryKart.Web.Controllers
             }
             return View();
         }
+
+        public ActionResult EditSubCategory(int id = -1)
+        {
+            using (_dbContext = new karrykartEntities())
+            {
+                var scategory = _dbContext.Subcategories.Find(id);
+
+                return View(new SubcategoryModel {CategoryID=scategory.CategoryID,Name =scategory.Name,ScategoryID=scategory.SCategoryID });
+            }
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditSubCategory(SubcategoryModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                using (_dbContext = new karrykartEntities())
+                {
+                    var scategory = _dbContext.Subcategories.Find(model.ScategoryID);
+                    scategory.Name = model.Name;
+                    _dbContext.Entry(scategory).State = System.Data.Entity.EntityState.Modified;
+                    _dbContext.SaveChanges();
+                    _logger.WriteLog(CommonHelper.MessageType.Success, "The sub category has been edited successfully, subcategory ID= " + model.ScategoryID, "EditSubCategory", "CategoryController", User.Identity.Name);
+                    Success("The subcategory has been edited successfully.", true);
+                    return RedirectToAction("SubCategory", "Category", new { id = model.CategoryID });
+                }
+            }
+
+            return View();
+        }
     }
 }

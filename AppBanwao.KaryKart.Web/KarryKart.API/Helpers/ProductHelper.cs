@@ -112,7 +112,7 @@ namespace KarryKart.API.Helpers
 
             foreach (var img in product.ProductImages)
             {
-                objImage = new ProductImages() { ImageID = img.ImageID,ImageLink=img.ImageLink};
+                objImage = new ProductImages() { ImageID = img.ImageID,ImageLink=img.ImageLink.Replace("~","../..")};
                 lstImages.Add(objImage);
                 objImage = null;
             }

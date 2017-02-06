@@ -156,6 +156,7 @@
     <EntitySetMapping Name="ProductPrices">
       <EntityTypeMapping TypeName="KarrykartModel.ProductPrice">
         <MappingFragment StoreEntitySet="ProductPrice">
+          <ScalarProperty Name="UnitID" ColumnName="UnitID" />
           <ScalarProperty Name="PriceID" ColumnName="PriceID" />
           <ScalarProperty Name="SizeID" ColumnName="SizeID" />
           <ScalarProperty Name="ProductID" ColumnName="ProductID" />
@@ -167,6 +168,7 @@
     <EntitySetMapping Name="ProductShippings">
       <EntityTypeMapping TypeName="KarrykartModel.ProductShipping">
         <MappingFragment StoreEntitySet="ProductShipping">
+          <ScalarProperty Name="UnitID" ColumnName="UnitID" />
           <ScalarProperty Name="ShippingCostID" ColumnName="ShippingCostID" />
           <ScalarProperty Name="SizeID" ColumnName="SizeID" />
           <ScalarProperty Name="ProductID" ColumnName="ProductID" />

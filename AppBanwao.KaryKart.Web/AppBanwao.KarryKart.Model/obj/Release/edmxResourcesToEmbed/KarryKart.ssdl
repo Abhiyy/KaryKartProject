@@ -254,6 +254,7 @@
     <Property Name="ProductID" Type="uniqueidentifier" />
     <Property Name="Price" Type="decimal" Precision="10" Scale="2" />
     <Property Name="CurrencyID" Type="int" />
+    <Property Name="UnitID" Type="int" />
   </EntityType>
   <EntityType Name="ProductShipping">
     <Key>
@@ -263,6 +264,7 @@
     <Property Name="SizeID" Type="int" />
     <Property Name="ProductID" Type="uniqueidentifier" />
     <Property Name="Cost" Type="decimal" Precision="7" Scale="2" />
+    <Property Name="UnitID" Type="int" />
   </EntityType>
   <EntityType Name="ProductSizeMapping">
     <Key>

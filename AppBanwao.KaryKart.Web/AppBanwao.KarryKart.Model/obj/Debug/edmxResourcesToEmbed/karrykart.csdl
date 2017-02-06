@@ -280,6 +280,7 @@
     <Property Name="CurrencyID" Type="Int32" />
     <NavigationProperty Name="Product" Relationship="KarrykartModel.FK__ProductPr__Produ__3E52440B" FromRole="ProductPrice" ToRole="Product" />
     <NavigationProperty Name="Product1" Relationship="KarrykartModel.FK__ProductPr__Produ__45F365D3" FromRole="ProductPrice" ToRole="Product" />
+    <Property Type="Int32" Name="UnitID" />
   </EntityType>
   <EntityType Name="ProductShipping">
     <Key>
@@ -291,6 +292,7 @@
     <Property Name="Cost" Type="Decimal" Precision="7" Scale="2" />
     <NavigationProperty Name="Product" Relationship="KarrykartModel.FK__ProductSh__Produ__403A8C7D" FromRole="ProductShipping" ToRole="Product" />
     <NavigationProperty Name="Product1" Relationship="KarrykartModel.FK__ProductSh__Produ__47DBAE45" FromRole="ProductShipping" ToRole="Product" />
+    <Property Type="Int32" Name="UnitID" />
   </EntityType>
   <EntityType Name="ProductSizeMapping">
     <Key>

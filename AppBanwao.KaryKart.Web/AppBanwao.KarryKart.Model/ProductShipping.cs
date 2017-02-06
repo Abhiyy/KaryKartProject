@@ -18,6 +18,7 @@ namespace AppBanwao.KarryKart.Model
         public Nullable<int> SizeID { get; set; }
         public Nullable<System.Guid> ProductID { get; set; }
         public Nullable<decimal> Cost { get; set; }
+        public Nullable<int> UnitID { get; set; }
     
         public virtual Product Product { get; set; }
         public virtual Product Product1 { get; set; }

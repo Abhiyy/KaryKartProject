@@ -26,10 +26,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/02/2016 22:03:29</publishTime>
     </File>
     <File Include="bin/AppBanwao.KarryKart.Model.dll">
-      <publishTime>01/19/2017 08:52:07</publishTime>
+      <publishTime>02/04/2017 17:21:42</publishTime>
     </File>
     <File Include="bin/AppBanwao.KaryKart.Web.dll">
-      <publishTime>01/29/2017 16:13:00</publishTime>
+      <publishTime>02/04/2017 17:21:43</publishTime>
     </File>
     <File Include="bin/DA.EmailEngine.dll">
       <publishTime>01/19/2017 08:52:06</publishTime>
@@ -4703,7 +4703,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/27/2016 10:55:00</publishTime>
     </File>
     <File Include="Scripts/App/ProductCtrl.js">
-      <publishTime>01/29/2017 16:18:49</publishTime>
+      <publishTime>02/04/2017 18:45:47</publishTime>
     </File>
     <File Include="Scripts/App/RegisterCtrl.js">
       <publishTime>01/07/2017 21:49:40</publishTime>
@@ -12115,11 +12115,14 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/Category/Edit.cshtml">
       <publishTime>07/24/2016 09:04:38</publishTime>
     </File>
+    <File Include="Views/Category/EditSubCategory.cshtml">
+      <publishTime>02/04/2017 17:18:22</publishTime>
+    </File>
     <File Include="Views/Category/Index.cshtml">
       <publishTime>01/10/2017 09:29:11</publishTime>
     </File>
     <File Include="Views/Category/Subcategory.cshtml">
-      <publishTime>07/24/2016 09:04:38</publishTime>
+      <publishTime>02/04/2017 17:10:51</publishTime>
     </File>
     <File Include="Views/Country/Create.cshtml">
       <publishTime>07/24/2016 09:04:38</publishTime>
@@ -12149,7 +12152,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/28/2017 21:04:42</publishTime>
     </File>
     <File Include="Views/Product/Edit.cshtml">
-      <publishTime>01/29/2017 15:50:06</publishTime>
+      <publishTime>02/04/2017 18:54:40</publishTime>
     </File>
     <File Include="Views/Product/Index.cshtml">
       <publishTime>01/14/2017 11:46:22</publishTime>
@@ -12236,7 +12239,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/24/2016 09:04:38</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>01/29/2017 16:22:22</publishTime>
+      <publishTime>02/04/2017 18:54:53</publishTime>
     </File>
   </ItemGroup>
 </Project>
